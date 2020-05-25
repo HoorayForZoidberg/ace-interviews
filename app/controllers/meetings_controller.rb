@@ -1,6 +1,6 @@
 class MeetingsController < ApplicationController
 
-def index
+def meetings
   @meetings = Meeting.all
 end
 
@@ -20,11 +20,12 @@ def create
 end
 
 def show
-  @meeting = Meeting.new
+  @meeting = Meeting.find(params[:id])
+  @review = Review.new
 end
 
 def edit
-  @meeting
+  @meeting = Meeting.new
 end
 
 def update
@@ -36,6 +37,7 @@ def update
 end
 
 def destroy
+  @meeting = Meeting.find(params[:id])
   @meeting.destroy
   redirect_to index_path
 end
@@ -43,7 +45,7 @@ end
 private
 
 def meeting_params
-  params.require(:meeting).permit(:date, :id_interviewer, :id_question, :id_interviewee, :finished)
+  params.require(:meeting).permit(:date, :id_interviewer, :id_question)
 end
 
 end
