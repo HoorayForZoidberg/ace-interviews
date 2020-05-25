@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_25_120030) do
+ActiveRecord::Schema.define(version: 2020_05_25_120934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,8 +22,10 @@ ActiveRecord::Schema.define(version: 2020_05_25_120030) do
     t.boolean "finished", default: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "question_id", null: false
     t.index ["interviewee_id"], name: "index_meetings_on_interviewee_id"
     t.index ["interviewer_id"], name: "index_meetings_on_interviewer_id"
+    t.index ["question_id"], name: "index_meetings_on_question_id"
   end
 
   create_table "questions", force: :cascade do |t|
@@ -45,4 +47,5 @@ ActiveRecord::Schema.define(version: 2020_05_25_120030) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "meetings", "questions"
 end
