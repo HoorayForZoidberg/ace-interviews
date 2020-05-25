@@ -5,7 +5,6 @@ def index
 end
 
 def new
-  #meeting has id / date / id_interviewer / id_question / id_interviewee / finished
   @meeting = Meeting.new
 end
 
@@ -25,9 +24,15 @@ def show
 end
 
 def edit
+  @meeting
 end
 
 def update
+  if @meeting.update(meeting_params)
+    redirect_to meeting_path(@meeting)
+  else
+    render :edit
+  end
 end
 
 def destroy
