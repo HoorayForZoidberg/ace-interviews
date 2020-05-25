@@ -10,30 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
-ActiveRecord::Schema.define(version: 2020_05_25_130543) do
-
+ActiveRecord::Schema.define(version: 2020_05_25_134526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-
-  create_table "meetings", force: :cascade do |t|
-    t.date "date"
-    t.integer "interviewee_id", null: false
-    t.integer "interviewer_id", null: false
-    t.boolean "finished", default: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.bigint "question_id", null: false
-    t.index ["interviewee_id"], name: "index_meetings_on_interviewee_id"
-    t.index ["interviewer_id"], name: "index_meetings_on_interviewer_id"
-    t.index ["question_id"], name: "index_meetings_on_question_id"
-  end
-
-  create_table "questions", force: :cascade do |t|
-    t.string "industry"
-    t.string "type"
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -54,6 +34,37 @@ ActiveRecord::Schema.define(version: 2020_05_25_130543) do
     t.string "checksum", null: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "meetings", force: :cascade do |t|
+    t.date "date"
+    t.integer "interviewee_id", null: false
+    t.integer "interviewer_id", null: false
+    t.boolean "finished", default: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "question_id", null: false
+    t.index ["interviewee_id"], name: "index_meetings_on_interviewee_id"
+    t.index ["interviewer_id"], name: "index_meetings_on_interviewer_id"
+    t.index ["question_id"], name: "index_meetings_on_question_id"
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string "industry"
+    t.string "type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.text "content"
+    t.bigint "meeting_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["meeting_id"], name: "index_reviews_on_meeting_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "universities", force: :cascade do |t|
@@ -80,8 +91,9 @@ ActiveRecord::Schema.define(version: 2020_05_25_130543) do
     t.index ["university_id"], name: "index_users_on_university_id"
   end
 
-
-  add_foreign_key "meetings", "questions"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "meetings", "questions"
+  add_foreign_key "reviews", "meetings"
+  add_foreign_key "reviews", "users"
   add_foreign_key "users", "universities"
 end
