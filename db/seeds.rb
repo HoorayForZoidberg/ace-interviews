@@ -5,3 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Universities.get_all.each do |university|
+  university = University.create! name: university.name, address: university.country
+  puts "#{university.name} created"
+end
