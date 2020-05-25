@@ -1,7 +1,7 @@
 class MeetingsController < ApplicationController
   before_action :find_meeting, only: [:show, :edit, :update, :destroy]
   def index
-    @meetings = Meeting.where(interviewee_id == current_user.id || interviewer_id == current_user.id)
+    @meetings = Meeting.where('interviewee_id = :user_id OR interviewer_id = :user_id', user_id: id)
   end
 
   def new
