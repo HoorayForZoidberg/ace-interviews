@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @meetings = @user.meetings
-    @reviews = @meetings.reviews if @meetings.reviews.user != @user
+    @reviews = @meetings.map(&:reviews).flatten.reject{ |review| review.user == @user }
   end
 
 
