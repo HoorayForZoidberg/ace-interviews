@@ -1,25 +1,20 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: [ :user ]
+  before_action :set_meeting, only: [ :new, :create ]
 
-
-#  def show
-#    @review
-#  end
-
- # def index
- #   @reviews = Review.all
-    #filter it by current user
-
-  #end
+ #def index
+ #   @reviews = Review.where(user_id: current_user.id)
+ #end
 
   def new
-    @meeting = Meeting.find(params[:meeting_id])
+    @meeting
     @review = Review.new
   end
 
   def create
+    @user = current_user
+    @meeting
     @review = Review.new(review_params)
-    @meeting = Meeting.find(params[:meeting_id])
     @review.meeting = @meeting
     if @review.save
       redirect_to user_path(@user)
@@ -29,6 +24,10 @@ class ReviewsController < ApplicationController
   end
 
   private
+
+  def set_meeting
+    @meeting = Meeting.find(params[:meeting_id])
+  end
 
   def review_params
     params.require(:review).permit(:content, :rating)
