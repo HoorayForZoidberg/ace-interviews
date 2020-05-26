@@ -6,7 +6,7 @@
         is underway. Click the button below to enter.
       </h3>
       <a class="btn btn-flat mt-5" href="#">Enter the Wu Tang</a>
-    <% elsif DateTime.now > (@meeting.date - 300)%>
+    <% elsif DateTime.now > (@meeting.date - 300.seconds)%>
       <h3 class="mt-5">
         The room for your meeting with <%= @other_user.first_name.capitalize %>
         is open and will start shortly! Click the button below to enter.
@@ -22,11 +22,7 @@
   <div class="row meeting-details">
     <div class="col-xs-12 col-lg-6">
       <h3>
-        Meeting with <% if @interviewee == current_user %>
-          <%= @interviewer.first_name.capitalize %>
-        <% else %>
-          <%= @interviewee.first_name.capitalize %>
-        <% end %>
+        Meeting with <%= @interviewee == current_user ? @interviewer.first_name.capitalize : @interviewee.first_name.capitalize %>
       </h3>
       <p>Date:  <strong><%= @meeting.date.strftime("%e %B %Y") %></strong></p>
       <p>Time:  <strong><%= @meeting.date.strftime("%l:%M") %></strong></p>

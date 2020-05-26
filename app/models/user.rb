@@ -14,11 +14,7 @@ class User < ApplicationRecord
   validates :first_name, :last_name, :email, :address, presence: true
 
   def is(interviewer, interviewee)
-    if self == interviewer
-      return interviewee
-    else
-       return interviewer
-    end
+    self == interviewer ? interviewee : interviewer
   end
 
   def meetings
