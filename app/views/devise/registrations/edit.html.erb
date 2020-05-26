@@ -16,16 +16,12 @@
                 input_html: { autocomplete: "first name" }%>
     <%= f.input :last_name,
                 required: true,
-                autofocus: true,
                 input_html: { autocomplete: "last name" }%>
     <%= f.association :university,
-                prompt: :translate,
                 required: false,
-                autofocus: true,
                 input_html: { autocomplete: "your university" }%>
     <%= f.input :address,
                 required: true,
-                autofocus: true,
                 input_html: { autocomplete: "enter your address" }%>
     <%= f.input :password,
                 hint: "leave it blank if you don't want to change it",
