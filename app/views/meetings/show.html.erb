@@ -9,7 +9,7 @@
     <% elsif DateTime.now > (@meeting.date - 300)%>
       <h3 class="mt-5">
         The room for your meeting with <%= @other_user.first_name.capitalize %>
-        is open! Click the button below to enter.
+        is open and will start shortly! Click the button below to enter.
       </h3>
       <a class="btn btn-flat mt-5" href="#">Enter the Wu Tang</a>
     <% else %>
