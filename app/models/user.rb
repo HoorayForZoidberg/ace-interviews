@@ -13,11 +13,6 @@ class User < ApplicationRecord
   has_one_attached :avatar
   validates :first_name, :last_name, :email, :address, presence: true
 
-<<<<<<< HEAD
-  def meetings
-    Meeting.where('interviewee_id = :user_id OR interviewer_id = :user_id', user_id: id)
-  end
-
   def is(interviewer, interviewee)
     if self == interviewer
       return interviewee
@@ -25,7 +20,6 @@ class User < ApplicationRecord
        return interviewer
     end
   end
-=======
 
     def meetings
       Meeting.where('interviewee_id = :user_id OR interviewer_id = :user_id', user_id: id)
@@ -56,5 +50,4 @@ class User < ApplicationRecord
       return 0 if reviews.empty?
       reviews.sum.fdiv(reviews.size)
     end
->>>>>>> 7167bf0e1c444ffdd28b92d437217827c5930c5f
 end
