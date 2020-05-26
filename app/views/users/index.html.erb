@@ -32,11 +32,12 @@
                 </button>
               </div>
               <div class="modal-body">
-                ...
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <p>INSERT DATETIME PICKER BELOW</p>
+                <%= simple_form_for @meeting, url:user_meetings_path(current_user), method: :post do |f| %>
+                  <%= f.input :date, as: :datetime %>
+                  <%= f.hidden_field :interviewer_id, value: user.id %>
+                  <%= f.button :submit  %>
+                <% end %>
               </div>
             </div>
           </div>

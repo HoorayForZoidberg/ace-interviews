@@ -9,8 +9,9 @@ class MeetingsController < ApplicationController
   end
 
   def create
+
     @meeting = Meeting.new(meeting_params)
-    @meeting.interviewee_id = current_user
+    @meeting.interviewee_id = current_user.id
     @meeting.finished = false
     if @meeting.save
       redirect_to meeting_path(@meeting)
