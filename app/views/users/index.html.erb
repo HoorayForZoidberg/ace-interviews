@@ -36,7 +36,7 @@
                 <%= simple_form_for @meeting, url:user_meetings_path(current_user), method: :post do |f| %>
                   <%= f.input :date, as: :datetime %>
                   <%= f.hidden_field :interviewer_id, value: user.id %>
-                  <%= f.button :submit  %>
+                  <%= f.submit  %>
                 <% end %>
               </div>
             </div>
