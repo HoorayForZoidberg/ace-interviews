@@ -13,10 +13,9 @@
                 autofocus: true,
                 input_html: { autocomplete: "last name" }%>
     <%= f.association :university,
-                prompt: :translate,
                 required: false,
                 autofocus: true,
-                input_html: { autocomplete: "your university" }%>
+                input_html: { class: 'select2', autocomplete: "your university" }%>
     <%= f.input :address,
                 required: true,
                 autofocus: true,
