@@ -1,0 +1,48 @@
+<div class="container">
+  <div>
+    <h2>You are looking at the interviewers</h2>
+  </div>
+  <% @users.each do |user| %>
+    <div class="card p-2">
+      <% if user&.avatar&.attached? %>
+          <%= cl_image_tag user.avatar.key, style: "width: 160px; heigh:160px; overflow: hidden;" %>
+        <% else %>
+          <%= image_tag "avatar-default.png", style: "width: 160px; heigh:160px; overflow: hidden;" %>
+        <% end %>
+
+        <%= link_to user_path(user) do %>
+          <h5><%= user.first_name %> <%= user.last_name%></h5>
+        <% end %>
+        <%= user.rating_as_interviewer %>
+        <ul>
+          <li><strong>Specialized:</strong> Tecnology</li>
+          <li><%= user.university.name %></li>
+          <li> <strong><%= user.meetings.length %></strong> cases done </li>
+        </ul>
+
+        <p class="btn btn-primary"  data-toggle="modal" data-target="#a<%= user.id %>" >I choose you</p>
+
+        <div class="modal fade" id="a<%= user.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+
+<% end %>
+</div>
