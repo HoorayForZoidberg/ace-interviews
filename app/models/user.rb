@@ -21,33 +21,34 @@ class User < ApplicationRecord
     end
   end
 
-    def meetings
-      Meeting.where('interviewee_id = :user_id OR interviewer_id = :user_id', user_id: id)
-    end
-    def meetings_as_interviewee
-      Meeting.where(interviewee_id: id)
-    end
-    def meetings_as_interviewer
-      Meeting.where(interviewer_id: id)
-    end
-    def reviews_as_interviewee
-      meetings_as_interviewee.map(&:reviews)
-                             .flatten
-                             .reject { |review| review.user == self }
-    end
-    def rating_as_interviewee
-      reviews = reviews_as_interviewee.map(&:rating)
-      return 0 if reviews.empty?
-      reviews.sum.fdiv(reviews.size)
-    end
-    def reviews_as_interviewer
-      meetings_as_interviewer.map(&:reviews)
-                             .flatten
-                             .reject { |review| review.user == self }
-    end
-    def rating_as_interviewer
-      reviews = reviews_as_interviewer.map(&:rating)
-      return 0 if reviews.empty?
-      reviews.sum.fdiv(reviews.size)
-    end
+  def meetings
+    Meeting.where('interviewee_id = :user_id OR interviewer_id = :user_id', user_id: id)
+  end
+  def meetings_as_interviewee
+    Meeting.where(interviewee_id: id)
+  end
+  def meetings_as_interviewer
+    Meeting.where(interviewer_id: id)
+  end
+  def reviews_as_interviewee
+    meetings_as_interviewee.map(&:reviews)
+                           .flatten
+                           .reject { |review| review.user == self }
+  end
+  def rating_as_interviewee
+    reviews = reviews_as_interviewee.map(&:rating)
+    return 0 if reviews.empty?
+    reviews.sum.fdiv(reviews.size)
+  end
+  def reviews_as_interviewer
+    meetings_as_interviewer.map(&:reviews)
+                           .flatten
+                           .reject { |review| review.user == self }
+  end
+  def rating_as_interviewer
+    reviews = reviews_as_interviewer.map(&:rating)
+    return 0 if reviews.empty?
+    reviews.sum.fdiv(reviews.size)
+  end
+
 end
