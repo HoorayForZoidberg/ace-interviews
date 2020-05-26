@@ -13,7 +13,15 @@ class User < ApplicationRecord
   has_one_attached :avatar
   validates :first_name, :last_name, :email, :address, presence: true
 
-   def meetings
+  def meetings
     Meeting.where('interviewee_id = :user_id OR interviewer_id = :user_id', user_id: id)
+  end
+
+  def is(interviewer, interviewee)
+    if self == interviewer
+      return interviewee
+    else
+       return interviewer
+    end
   end
 end

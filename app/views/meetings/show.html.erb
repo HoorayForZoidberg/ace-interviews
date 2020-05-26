@@ -1,9 +1,45 @@
 <div class=container>
   <div class="wait-message">
     <h3 class="mt-5">
-      The option to begin your meeting with Eunice
+      The option to begin your meeting with <% if @interviewee == current_user %>
+        <%= @interviewer.first_name.capitalize %>
+      <% else %>
+        <%= @interviewee.first_name.capitalize %>
+      <% end %> 
       will appear 5 minutes before the meeting is due to start.
     </h3>
     <a class="btn btn-flat mt-5" href="#">Enter the Wu Tang</a>
   </div>
+  <div class="row meeting-details">
+    <div class="col-xs-12 col-lg-6">
+      <h3>
+        Meeting with <% if @interviewee == current_user %>
+          <%= @interviewer.first_name.capitalize %>
+        <% else %>
+          <%= @interviewee.first_name.capitalize %>
+        <% end %>
+      </h3>
+      <p>Date:  <strong><%= @meeting.date.strftime("%e %B %Y") %></strong></p>
+      <p>Time:  <strong><%= @meeting.date.strftime("%l:%M") %></strong></p>
+      <p>Industry:  <strong><%= @question.industry %></strong></p>
+      <p>Discipline:  <strong><%= @question.discipline %></strong></p>
+    </div>
+    <div class="col-xs-12 col-lg-6">
+      <h1>Working</h1>
+      <% if @interviewee == current_user %>
+        <% if @interviewee.avatar.attached? %>
+          <%= cl_image_tag @interviewee.avatar.key, height: 90, width: 90, crop: :fill, class:"avatar-large" %>
+        <% else %>
+          <%= image_tag "avatar-default.png", height: 90, width: 90, crop: :fill, class:"avatar-large" %>
+        <% end %>
+      <% else %>
+        <% if @interviewer.avatar.attached? %>
+          <%= cl_image_tag @interviewer.avatar.key, height: 90, width: 90, crop: :fill, class:"avatar-large" %>
+        <% else %>
+          <%= image_tag "avatar-default.png", height: 90, width: 90, crop: :fill, class:"avatar-large" %>
+        <% end %>
+      <% end %> 
+    </div>
+  </div>
 </div>
+
