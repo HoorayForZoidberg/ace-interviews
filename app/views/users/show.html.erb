@@ -1,7 +1,15 @@
 <div class="container">
   <!-- profile card -->
 <div class="profile-card">
-
+  <div class="card-body">
+    <h5>Welcome <%= @user.first_name %></h5>
+    <p>Your progess:</p>
+    <ul>
+      <li>You have been interviewed <%= pluralize(@meetings_as_applicant.count, 'time') %></li>
+      <li>Your average rating as an applicant: <%= @reviews %></li>
+      <li>You have given <%= pluralize(@meetings_as_interviewer.count, 'interview') %> to your peers</li>
+    </ul>
+  </div>
 </div>
 
 
