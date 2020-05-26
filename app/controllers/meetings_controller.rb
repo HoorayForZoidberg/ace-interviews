@@ -23,9 +23,7 @@ class MeetingsController < ApplicationController
     @review = Review.new
   end
 
-  def edit
-
-  end
+  def edit; end
 
   def update
     if @meeting.update(meeting_params)
@@ -37,7 +35,7 @@ class MeetingsController < ApplicationController
 
   def destroy
     @meeting.destroy
-    redirect_to index_path
+    redirect_to meetings_path
   end
 
 private
