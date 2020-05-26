@@ -21,8 +21,8 @@ class MeetingsController < ApplicationController
 
   def show
     @review = Review.new
-    @interviewee = User.find(@meeting.interviewee_id)
-    @interviewer = User.find(@meeting.interviewer_id)
+    @interviewee = @meeting.interviewee
+    @interviewer = @meeting.interviewer
     @question = Question.find(@meeting.question_id)
     @other_user = current_user.is(@interviewer, @interviewee)
 
