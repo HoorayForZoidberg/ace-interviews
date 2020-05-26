@@ -2,18 +2,12 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: [ :user ]
   before_action :set_meeting, only: [ :new, :create ]
 
- #def index
- #   @reviews = Review.where(user_id: current_user.id)
- #end
-
   def new
-    @meeting
     @review = Review.new
   end
 
   def create
     @user = current_user
-    @meeting
     @review = Review.new(review_params)
     @review.meeting = @meeting
     if @review.save
