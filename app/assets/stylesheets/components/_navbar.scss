@@ -11,13 +11,14 @@
   border-radius: 50%;
 }
 
-.container_navbar-links {
+.container-navbar-links {
   display: flex;
   align-items: center;
 
-}
-.container_navbar-links p{
-  margin-bottom: 0;
+  p {
+    margin-bottom: 0;
+  }
+
 }
 .navbar-card {
   background-color: #fff;
