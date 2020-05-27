@@ -1,50 +1,3 @@
-<div class=container>
-  <div class="wait-message">
-    <% if DateTime.now > @meeting.date && @meeting.finished == false%>
-      <h3 class="mt-5">
-        Your meeting with <%= @other_user.first_name.capitalize %>
-        is underway. Click the button below to enter.
-      </h3>
-      <%= button_tag 'Join Meeting', id: 'join-meeting', name: "join-meeting-#{@meeting.id}", class:'link link-primary mr-2' %>
-    <% elsif DateTime.now > (@meeting.date - 300.seconds)%>
-      <h3 class="mt-5">
-        The room for your meeting with <%= @other_user.first_name.capitalize %>
-        is open and will start shortly! Click the button below to enter.
-      </h3>
-      <%= button_tag 'Join Meeting', id: 'join-meeting', name: "join-meeting-#{@meeting.id}", class:'link link-primary mr-2' %>
-    <% else %>
-      <h3 class="mt-5">
-        The option to begin your meeting with <%= @other_user.first_name.capitalize %>
-        will appear 5 minutes before the meeting is due to start.
-      </h3>
-    <% end %>
-  </div>
-  <div class="row meeting-details">
-    <div class="col-xs-12 col-lg-6">
-      <h3>
-        Meeting with <%= @interviewee == current_user ? @interviewer.first_name.capitalize : @interviewee.first_name.capitalize %>
-      </h3>
-      <p>Date:  <strong><%= @meeting.date.strftime("%e %B %Y") %></strong></p>
-      <p>Time:  <strong><%= @meeting.date.strftime("%l:%M") %></strong></p>
-      <p>Industry:  <strong><%= @question.industry %></strong></p>
-      <p>Discipline:  <strong><%= @question.discipline %></strong></p>
-    </div>
-    <div class="col-xs-12 col-lg-6">
-      <% if @other_user.avatar.attached? %>
-        <%= cl_image_tag @interviewee.avatar.key, height: 90, width: 90, crop: :fill, class:"avatar-large" %>
-      <% else %>
-        <%= image_tag "avatar-default.png", height: 90, width: 90, crop: :fill, class:"avatar-large" %>
-      <% end %>
-      <p><strong><%= @other_user.first_name.capitalize %> <%= @other_user.last_name.capitalize %></strong></p>
-      <p><%= @other_user.university.name %></p>
-    </div>
-  </div>
-</div>
-
-
-
-
-
 <div class="container">
   <div class="meeting-buttons">
     <span data-filter=".join-meeting"><%= link_to "join-meeting", root_path, class: "active" %></span>
@@ -55,9 +8,6 @@
 
 <div class="container">
   <div class="join-meeting meeting-tab">
-    <h1>Hello</h1>
-  </div>
-  <div class="leave-meeting meeting-tab">
     <div class="container wrapper" id="video-chat" data-id="<%= @meeting.id %>">
       <div class="mb-3">
         <%= button_tag 'Join Meeting', id: 'join-meeting', name: "join-meeting-#{@meeting.id}", class:'link link-primary mr-2' %>
@@ -66,6 +16,50 @@
       <div class="row" id="remote-video-container">
         <div class="col-6 col-md-3">
           <video id="local-video" class="w-100" autoplay></video>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="leave-meeting meeting-tab">
+    <div class=container>
+      <div class="wait-message">
+        <% if DateTime.now > @meeting.date && @meeting.finished == false%>
+          <h3 class="mt-5">
+            Your meeting with <%= @other_user.first_name.capitalize %>
+            is underway. Click the button below to enter.
+          </h3>
+          <%= button_tag 'Join Meeting', id: 'join-meeting', name: "join-meeting-#{@meeting.id}", class:'link link-primary mr-2' %>
+        <% elsif DateTime.now > (@meeting.date - 300.seconds)%>
+          <h3 class="mt-5">
+            The room for your meeting with <%= @other_user.first_name.capitalize %>
+            is open and will start shortly! Click the button below to enter.
+          </h3>
+          <%= button_tag 'Join Meeting', id: 'join-meeting', name: "join-meeting-#{@meeting.id}", class:'link link-primary mr-2' %>
+        <% else %>
+          <h3 class="mt-5">
+            The option to begin your meeting with <%= @other_user.first_name.capitalize %>
+            will appear 5 minutes before the meeting is due to start.
+          </h3>
+        <% end %>
+      </div>
+      <div class="row meeting-details">
+        <div class="col-xs-12 col-lg-6">
+          <h3>
+            Meeting with <%= @interviewee == current_user ? @interviewer.first_name.capitalize : @interviewee.first_name.capitalize %>
+          </h3>
+          <p>Date:  <strong><%= @meeting.date.strftime("%e %B %Y") %></strong></p>
+          <p>Time:  <strong><%= @meeting.date.strftime("%l:%M") %></strong></p>
+          <p>Industry:  <strong><%= @question.industry %></strong></p>
+          <p>Discipline:  <strong><%= @question.discipline %></strong></p>
+        </div>
+        <div class="col-xs-12 col-lg-6">
+          <% if @other_user.avatar.attached? %>
+            <%= cl_image_tag @interviewee.avatar.key, height: 90, width: 90, crop: :fill, class:"avatar-large" %>
+          <% else %>
+            <%= image_tag "avatar-default.png", height: 90, width: 90, crop: :fill, class:"avatar-large" %>
+          <% end %>
+          <p><strong><%= @other_user.first_name.capitalize %> <%= @other_user.last_name.capitalize %></strong></p>
+          <p><%= @other_user.university.name %></p>
         </div>
       </div>
     </div>
