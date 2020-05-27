@@ -12,6 +12,8 @@ class MeetingsController < ApplicationController
 
     @meeting = Meeting.new(meeting_params)
     @meeting.interviewee = current_user
+    @interviewer = User.find(params[:user_id])
+    @meeting.interviewer = @interviewer
     @meeting.finished = false
     if @meeting.save
       redirect_to meeting_path(@meeting)
@@ -49,7 +51,7 @@ class MeetingsController < ApplicationController
 private
 
   def meeting_params
-    params.require(:meeting).permit(:date, :interviewer_id, :question_id)
+    params.require(:meeting).permit(:date, :question_id)
   end
 
   def find_meeting

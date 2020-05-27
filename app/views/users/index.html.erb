@@ -5,43 +5,43 @@
   <% @users.each do |user| %>
     <div class="card p-2">
       <% if user&.avatar&.attached? %>
-          <%= cl_image_tag user.avatar.key, style: "width: 160px; heigh:160px; overflow: hidden;" %>
-        <% else %>
-          <%= image_tag "avatar-default.png", style: "width: 160px; heigh:160px; overflow: hidden;" %>
-        <% end %>
+        <%= cl_image_tag user.avatar.key, style: "width: 160px; heigh:160px; overflow: hidden;" %>
+      <% else %>
+        <%= image_tag "avatar-default.png", style: "width: 160px; heigh:160px; overflow: hidden;" %>
+      <% end %>
 
-        <%= link_to user_path(user) do %>
-          <h5><%= user.first_name %> <%= user.last_name%></h5>
-        <% end %>
-        <%= user.rating_as_interviewer %>
-        <ul>
-          <li><strong>Specialized:</strong> Tecnology</li>
-          <li><%= user.university.name %></li>
-          <li> <strong><%= user.meetings.length %></strong> cases done </li>
-        </ul>
+      <%= link_to user_path(user) do %>
+        <h5><%= user.first_name %> <%= user.last_name%></h5>
+      <% end %>
+      <%= user.rating_as_interviewer %>
+      <ul>
+        <li><strong>Specialized:</strong> Tecnology</li>
+        <li><%= user.university.name %></li>
+        <li> <strong><%= pluralize(user.meetings_as_interviewer(past:true).count, 'interview')  %></strong> given </li>
+        <li> <strong><%= pluralize(user.meetings_as_interviewee(past:true).count, 'case')  %></strong> solved </li>
+      </ul>
 
-        <p class="btn btn-primary"  data-toggle="modal" data-target="#a<%= user.id %>" >I choose you</p>
+      <p class="btn btn-primary"  data-toggle="modal" data-target="#a<%= user.id %>" >I choose you</p>
 
-        <div class="modal fade" id="a<%= user.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <p>INSERT DATETIME PICKER BELOW</p>
-                <%= simple_form_for @meeting, url:user_meetings_path(current_user), method: :post do |f| %>
-                  <%= f.input :date, as: :datetime %>
-                  <%= f.hidden_field :interviewer_id, value: user.id %>
-                  <%= f.submit  %>
-                <% end %>
-              </div>
+      <div class="modal fade" id="a<%= user.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>INSERT DATETIME PICKER BELOW</p>
+              <%= simple_form_for ([user, @meeting]) do |f| %>
+                <%= f.input :date, html5: true %>
+                <%= f.submit  %>
+              <% end %>
             </div>
           </div>
         </div>
+      </div>
     </div>
 
 

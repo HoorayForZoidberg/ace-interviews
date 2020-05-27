@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:index, :show] do
 
-    resources :meetings, only: [:new, :create]
+    resources :meetings, only: [:create]
   end
   resources :meetings, only: [:index, :show, :edit, :update, :destroy] do
     resources :reviews, only: [:new, :create]
