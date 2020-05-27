@@ -53,25 +53,32 @@
           </div>
         </div>
       </div>
-      <div class="header-upcoming-interviews">
-        <h5>Upcoming Interviews:</h5>
+      <div class="header-upcoming-interviews d-flex align-items-center">
+        <h5 class="m-0">Upcoming Interviews</h5>
       </div>
       <div class="row">
-        <% @user.meetings_as_interviewee.each do |meeting| %>
-          <div class="col-sm-6">
-            <div class="card-meeting">
-              <div class="partner-info">
-                <% interviewer = meeting.interviewer %>
-                <p><%= interviewer.first_name.capitalize %></p>
-                <p><%= interviewer.university.name %></p>
-                <p><%= interviewer.rating_as_interviewer %></p>
-                <% if interviewer.avatar.attached? %>
-                  <%= cl_image_tag interviewer.avatar.key, alt: "user-avatar", width: 100, height: 100, crop: :fill %>
-                <% else %>
-                  <%= image_tag "avatar-default.png", alt: "user-avatar", width: 100, height: 100, crop: :fill %>
-                <% end %>
+        <% if @user.meetings_as_interviewee.any? %>
+          <% @user.meetings_as_interviewee.each do |meeting| %>
+            <div class="col-sm-6">
+              <div class="card-meeting">
+                <div class="partner-info">
+                  <% interviewer = meeting.interviewer %>
+                  <p><%= interviewer.first_name.capitalize %></p>
+                  <p><%= interviewer.university.name %></p>
+                  <p><%= interviewer.rating_as_interviewer %></p>
+                  <% if interviewer.avatar.attached? %>
+                    <%= cl_image_tag interviewer.avatar.key, alt: "user-avatar", width: 100, height: 100, crop: :fill %>
+                  <% else %>
+                    <%= image_tag "avatar-default.png", alt: "user-avatar", width: 100, height: 100, crop: :fill %>
+                  <% end %>
+                </div>
               </div>
             </div>
+          <% end %>
+        <% else %>
+          <div class="no-interviews">
+            <p>You don't have any interviews scheduled yet</p>
+            <%= link_to "Book interview", user_path, class: "btn btn-primary" %>
           </div>
         <% end %>
       </div>
@@ -95,25 +102,31 @@
           </div>
         </div>
       </div>
-      <div class="header-upcoming-interviews">
-      <h5>Upcoming Interviews:</h5>
+      <div class="header-upcoming-interviews d-flex align-items-center">
+      <h5 class="m-0">Upcoming Interviews </h5>
     </div>
     <div class="row">
-      <% @user.meetings_as_interviewer.each do |meeting| %>
-        <div class="col-sm-6">
-          <div class="card-meeting">
-            <div class="partner-info">
-              <% interviewee = meeting.interviewee %>
-              <p><%= interviewee.first_name.capitalize %></p>
-              <p><%= interviewee.university.name %></p>
-              <p><%= interviewee.rating_as_interviewee %></p>
-              <% if interviewee.avatar.attached? %>
-                <%= cl_image_tag interviewee.avatar.key, alt: "user-avatar", width: 100, height: 100, crop: :fill %>
-              <% else %>
-                <%= image_tag "avatar-default.png", alt: "user-avatar", width: 100, height: 100, crop: :fill %>
-              <% end %>
+      <% if @user.meetings_as_interviewee.any? %>
+        <% @user.meetings_as_interviewer.each do |meeting| %>
+          <div class="col-sm-6">
+            <div class="card-meeting">
+              <div class="partner-info">
+                <% interviewee = meeting.interviewee %>
+                <p><%= interviewee.first_name.capitalize %></p>
+                <p><%= interviewee.university.name %></p>
+                <p><%= interviewee.rating_as_interviewee %></p>
+                <% if interviewee.avatar.attached? %>
+                  <%= cl_image_tag interviewee.avatar.key, alt: "user-avatar", width: 100, height: 100, crop: :fill %>
+                <% else %>
+                  <%= image_tag "avatar-default.png", alt: "user-avatar", width: 100, height: 100, crop: :fill %>
+                <% end %>
+              </div>
             </div>
           </div>
+        <% end %>
+      <% else %>
+        <div class="no-interviews">
+          <p>You don't have any upcoming interviews. Accepting interview requests from other users will help you improve your skills</p>
         </div>
       <% end %>
     </div>
