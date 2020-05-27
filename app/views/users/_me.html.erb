@@ -2,13 +2,23 @@
 
   <div class="card-profile">
     <div class="card-profile-text">
-      <h5>Welcome <%= @user.first_name %></h5>
+      <div class="name-stars d-flex">
+        <h5>Welcome <%= @user.first_name %></h5>
+        <div class="stars">
+          <% user.rating_as_interviewer(past: true).to_i.times do %>
+            <i class="fas fa-star small"></i>
+          <% end %>
+          <% (5 - user.rating_as_interviewer(past: true).to_i).times do %>
+            <i class="far fa-star small"></i>
+          <% end %>
+        </div>
+      </div>
       <p>Your progess:</p>
       <ul>
         <li>You have been interviewed <%= pluralize(@user.meetings_as_interviewee(past: true).count, 'time') %></li>
-        <li>Your average rating as an applicant: <%= @user.rating_as_interviewee(past: true) %></li>
+        <li>Your average rating as an applicant: <%= @user.rating_as_interviewee(past: true).round(2) %></li>
         <li>You have given <%= pluralize(@user.meetings_as_interviewer(past:true).count, 'interview') %> to your peers</li>
-        <li>Your average rating as an interviewer: <%= @user.rating_as_interviewer(past: true) %></li>
+        <li>Your average rating as an interviewer: <%= @user.rating_as_interviewer(past: true).round(2) %></li>
       </ul>
     </div>
     <div class="card-profile-avatar">
@@ -62,7 +72,7 @@
                   <% interviewer = meeting.interviewer %>
                   <p><%= interviewer.first_name.capitalize %></p>
                   <p><%= interviewer.university.name %></p>
-                  <p><%= interviewer.rating_as_interviewer %></p>
+                  <p><%= interviewer.rating_as_interviewer.round(2) %></p>
                   <% if interviewer.avatar.attached? %>
                     <%= cl_image_tag interviewer.avatar.key, alt: "user-avatar", width: 100, height: 100, crop: :fill %>
                   <% else %>
@@ -111,7 +121,7 @@
                 <% interviewee = meeting.interviewee %>
                 <p><%= interviewee.first_name.capitalize %></p>
                 <p><%= interviewee.university.name %></p>
-                <p><%= interviewee.rating_as_interviewee %></p>
+                <p><%= interviewee.rating_as_interviewee.round(2) %></p>
                 <% if interviewee.avatar.attached? %>
                   <%= cl_image_tag interviewee.avatar.key, alt: "user-avatar", width: 100, height: 100, crop: :fill %>
                 <% else %>
