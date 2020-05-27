@@ -3,11 +3,13 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :users, only: [:index, :show] do
-
     resources :meetings, only: [:new, :create]
   end
+
   resources :meetings, only: [:index, :show, :edit, :update, :destroy] do
     resources :reviews, only: [:new, :create]
   end
+
   resources :reviews, only: [:index]
+  resources :live_chats, only: :create
 end

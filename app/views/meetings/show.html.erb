@@ -1,3 +1,4 @@
+<% if false %>
 <div class=container>
   <div class="wait-message">
     <% if DateTime.now > @meeting.date && @meeting.finished == false%>
@@ -37,6 +38,19 @@
       <% end %>
       <p><strong><%= @other_user.first_name.capitalize %> <%= @other_user.last_name.capitalize %></strong></p>
       <p><%= @other_user.university.name %></p>
+    </div>
+  </div>
+</div>
+<% end %>
+
+<div class="container wrapper" id="video-chat" data-id="<%= @meeting.id %>">
+  <div class="mb-3">
+    <%= button_tag 'Join Meeting', id: 'join-meeting', name: "join-meeting-#{@meeting.id}", class:'link link-primary mr-2' %>
+    <%= button_tag 'Leave Meeting', id: 'leave-meeting', name: "leave-meeting-#{@meeting.id}", class:'link link-secondary d-none' %>
+  </div>
+  <div class="row" id="remote-video-container">
+    <div class="col-6 col-md-3">
+      <video id="local-video" class="w-100" autoplay></video>
     </div>
   </div>
 </div>
