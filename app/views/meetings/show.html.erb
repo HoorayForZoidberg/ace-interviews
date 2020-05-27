@@ -1,4 +1,4 @@
-<% if false %>
+
 <div class=container>
   <div class="wait-message">
     <% if DateTime.now > @meeting.date && @meeting.finished == false%>
@@ -41,8 +41,8 @@
     </div>
   </div>
 </div>
-<% end %>
 
+<% if false %>
 <div class="container wrapper" id="video-chat" data-id="<%= @meeting.id %>">
   <div class="mb-3">
     <%= button_tag 'Join Meeting', id: 'join-meeting', name: "join-meeting-#{@meeting.id}", class:'link link-primary mr-2' %>
@@ -54,4 +54,5 @@
     </div>
   </div>
 </div>
+<% end %>
 

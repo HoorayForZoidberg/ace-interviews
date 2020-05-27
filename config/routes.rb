@@ -10,6 +10,6 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
   end
 
-  resources :reviews, only: [:index]
+  resources :reviews, only: :index
   resources :live_chats, only: :create
 end

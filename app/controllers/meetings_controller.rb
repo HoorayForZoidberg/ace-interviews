@@ -28,7 +28,7 @@ class MeetingsController < ApplicationController
     @other_user = current_user.is(@interviewer, @interviewee)
 
     return redirect_to root_path, notice: "This meeting has ended." if @meeting.finished?
-    return redirect_to root_path, notice: "You cannot access this page." if current_user != @interviewer || current_user != @interviewee
+    return redirect_to root_path, notice: "You cannot access this page." if current_user != @interviewer && current_user != @interviewee
   end
 
   def edit; end
