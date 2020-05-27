@@ -10,6 +10,7 @@ const broadcastData = (data) => {
 export {
   broadcastData
 }
+
 import consumer from './consumer';
 import { broadcastData } from './../packs/components/live_chat';
 import { currentUser } from './../packs/components/current_user';

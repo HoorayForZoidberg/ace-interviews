@@ -1,1 +1,70 @@
 // Specific CSS for your home-page
+.container_hero-baner{
+  position:relative;
+}
+
+.hero {
+  display: flex;
+  margin-top:40px;
+}
+
+.hero_text {
+  display: flex;
+  align-items: center;
+  margin: 16px;
+
+  h1 {
+  font-weight: bolder;
+  font-size: 32px ;
+  margin-bottom: 16px;
+
+  }
+
+  h4 {
+  font-weight: normal;
+  font-size: 22px;
+
+  }
+
+}
+
+.hero_image {
+  height: 460px;
+  margin: 16px;
+
+    img {
+      height: 480px;
+
+    }
+}
+
+
+.hero_banner{
+  position: absolute;
+  margin-top: -80px;
+  margin-left: 240px;
+  display: flex;
+  border-radius: 4px;
+  background-color: #fff;
+  align-items: center;
+  padding: 16px;
+  width: 400px;
+  box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.08);
+
+    h5 {
+      margin-top: 6px;
+
+    }
+
+    a{
+      color: white;
+      padding: 8px 16px;
+      margin-left: 16px;
+    }
+
+    p {
+      margin: 0;
+    }
+}
+
+
