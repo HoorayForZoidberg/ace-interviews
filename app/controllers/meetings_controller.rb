@@ -9,8 +9,9 @@ class MeetingsController < ApplicationController
   end
 
   def create
+
     @meeting = Meeting.new(meeting_params)
-    @meeting.interviewee_id = current_user
+    @meeting.interviewee = current_user
     @meeting.finished = false
     if @meeting.save
       redirect_to meeting_path(@meeting)
@@ -21,6 +22,13 @@ class MeetingsController < ApplicationController
 
   def show
     @review = Review.new
+    @interviewee = @meeting.interviewee
+    @interviewer = @meeting.interviewer
+    @question = Question.find(@meeting.question_id)
+    @other_user = current_user.is(@interviewer, @interviewee)
+
+    return redirect_to root_path, notice: "This meeting has ended." if @meeting.finished?
+    return redirect_to root_path, notice: "You cannot access this page." if current_user != @interviewer || current_user != @interviewee
   end
 
   def edit; end

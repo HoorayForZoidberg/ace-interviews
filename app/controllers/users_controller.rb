@@ -2,17 +2,14 @@ class UsersController < ApplicationController
 
   def index
     @users = User.where.not(id: current_user.id)
+    @meeting = Meeting.new
   end
 
   def show
     @user = User.find(params[:id])
+    return redirect_to root_path, notice: "you can't access this page" if current_user != @user
     @meetings = @user.meetings
-    @meetings_as_applicant = @meetings.where(interviewee_id: @user.id)
-    @meetings_as_interviewer = @meetings.where(interviewer_id: @user.id)
-    @reviews = @meetings.map(&:reviews).flatten.reject{ |review| review.user == @user }
-    @reviews_as_applicant = @meetings_as_applicant.map(&:reviews).flatten.reject { |review| review.user == @user }
-
   end
 
-
 end
+
