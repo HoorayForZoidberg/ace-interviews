@@ -102,7 +102,7 @@ end
   @meeting.interviewee_id = rand(1..100)
   @meeting.interviewer_id = @meeting.interviewee_id + rand(0..10)
   @meeting.finished = true
-  @meeting.question_id = rand(10..90)
+  @meeting.question_id = rand(1..50)
   @meeting.date = Date.current + rand(24..240)
   @meeting.save!
   puts "Created a meeting between #{@meeting.interviewee_id} user and #{@meeting.interviewer_id} on the #{@meeting.date} with question #{@meeting.question_id}"

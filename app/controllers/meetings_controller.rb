@@ -24,7 +24,7 @@ class MeetingsController < ApplicationController
     @review = Review.new
     @interviewee = @meeting.interviewee
     @interviewer = @meeting.interviewer
-    @question = Question.find(@meeting.question_id)
+    @question = Question.find(@meeting.question_id) if @meeting.question_id?
     @other_user = current_user.is(@interviewer, @interviewee)
 
     return redirect_to root_path, notice: "This meeting has ended." if @meeting.finished?
