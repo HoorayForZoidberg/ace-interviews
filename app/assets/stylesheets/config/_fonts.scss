@@ -1,9 +1,10 @@
 // Import Google fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+
 
 // Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
+
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
@@ -14,3 +15,53 @@ $headers-font: "Nunito", "Helvetica", "sans-serif";
 //        font-url('FontFile.ttf') format('truetype')
 // }
 // $my-font: "Font Name";
+ @font-face {
+   font-family: "Lato";
+   src: font-url('Lato/Lato-Regular.ttf');
+   src: font-url('Lato/Lato-Regular.ttf?#iefix') format('embedded-opentype'),
+        font-url('Lato/Lato-Regular.woff') format('woff'),
+        font-url('Lato/Lato-Regular.ttf') format('truetype');
+  font-weight: normal;
+ }
+
+ @font-face {
+   font-family: "Lato";
+   src: font-url('Lato/Lato-Light.ttf');
+   src: font-url('Lato/Lato-Light.ttf?#iefix') format('embedded-opentype'),
+        font-url('Lato/Lato-Light.woff') format('woff'),
+        font-url('Lato/Lato-Light.ttf') format('truetype');
+  font-weight: initial;
+ }
+
+  @font-face {
+   font-family: "Lato";
+   src: font-url('Lato/Lato-Thin.ttf');
+   src: font-url('Lato/Lato-Thin.ttf?#iefix') format('embedded-opentype'),
+        font-url('Lato/Lato-Thin.woff') format('woff'),
+        font-url('Lato/Lato-Thin.ttf') format('truetype');
+  font-weight: lighter;
+ }
+
+  @font-face {
+   font-family: "Lato";
+   src: font-url('Lato/Lato-Bold.ttf');
+   src: font-url('Lato/Lato-Bold.ttf?#iefix') format('embedded-opentype'),
+        font-url('Lato/Lato-Bold.woff') format('woff'),
+        font-url('Lato/Lato-Bold.ttf') format('truetype');
+  font-weight: bold;
+ }
+
+  @font-face {
+   font-family: "Lato";
+   src: font-url('Lato/Lato-Black.ttf');
+   src: font-url('Lato/Lato-Black.ttf?#iefix') format('embedded-opentype'),
+        font-url('Lato/Lato-Black.woff') format('woff'),
+        font-url('Lato/Lato-Black.ttf') format('truetype');
+  font-weight: bolder;
+ }
+
+ $my-font: "Lato";
+ $body-font: $my-font;
+ $headers-font: $my-font;
+ $base-size: 17px;
+
