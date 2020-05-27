@@ -6,9 +6,9 @@
       <p>Your progess:</p>
       <ul>
         <li>You have been interviewed <%= pluralize(@user.meetings_as_interviewee(past: true).count, 'time') %></li>
-        <li>Your average rating as an applicant: <%= @user.rating_as_interviewee %></li>
-        <li>You have given <%= pluralize(@user.meetings_as_interviewer.count, 'interview') %> to your peers</li>
-        <li>Your average rating as an interviewer: <%= @user.rating_as_interviewer %></li>
+        <li>Your average rating as an applicant: <%= @user.rating_as_interviewee(past: true) %></li>
+        <li>You have given <%= pluralize(@user.meetings_as_interviewer(past:true).count, 'interview') %> to your peers</li>
+        <li>Your average rating as an interviewer: <%= @user.rating_as_interviewer(past: true) %></li>
       </ul>
     </div>
     <div class="card-profile-avatar">
@@ -54,8 +54,8 @@
         <h5 class="m-0">Upcoming Interviews</h5>
       </div>
       <div class="row">
-        <% if @user.meetings_as_interviewee.any? %>
-          <% @user.meetings_as_interviewee.each do |meeting| %>
+        <% if @user.meetings_as_interviewee(future: true).any? %>
+          <% @user.meetings_as_interviewee(future: true).each do |meeting| %>
             <div class="col-sm-6">
               <div class="card-meeting">
                 <div class="partner-info">
@@ -103,8 +103,8 @@
       <h5 class="m-0">Upcoming Interviews </h5>
     </div>
     <div class="row">
-      <% if @user.meetings_as_interviewee.any? %>
-        <% @user.meetings_as_interviewer.each do |meeting| %>
+      <% if @user.meetings_as_interviewee(future: true).any? %>
+        <% @user.meetings_as_interviewer(future: true).each do |meeting| %>
           <div class="col-sm-6">
             <div class="card-meeting">
               <div class="partner-info">
