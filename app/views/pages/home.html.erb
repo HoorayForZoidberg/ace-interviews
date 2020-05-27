@@ -1,2 +1,23 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+
+<div class="container">
+  <div class="container_hero-baner">
+    <div class="hero row justify-content-center">
+      <div class="hero_text justify-content-center">
+        <div class="">
+          <h1>The easiest way to prepare <br>for your interview</h1>
+          <h4>Practice case studies with peers and <br>get ready to ace your interview</h4>
+        </div>
+      </div>
+      <div class="hero_image col-5-sm">
+        <img src="/assets/hero_big.png" alt="">
+      </div>
+
+    </div>
+        <div class="hero_banner justify-content-between justify-content-center">
+          <h5>Get started today</h5>
+          <%= link_to new_user_registration_path, class: "btn btn-primary " do %>
+            <p>SIGN-UP</p>
+          <% end %>
+      </div>
+  </div>
+</div>
