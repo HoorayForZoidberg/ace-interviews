@@ -14,15 +14,12 @@
   margin: 16px;
 
   h1 {
-  font-weight: bolder;
-  font-size: 32px ;
   margin-bottom: 16px;
 
   }
 
   h4 {
-  font-weight: normal;
-  font-size: 22px;
+  font-weight: inherit;
 
   }
 
@@ -37,7 +34,6 @@
 
     }
 }
-
 
 .hero_banner{
   position: absolute;
@@ -56,15 +52,117 @@
 
     }
 
-    a{
-      color: white;
-      padding: 8px 16px;
-      margin-left: 16px;
-    }
-
     p {
       margin: 0;
     }
 }
+
+.get_with_ace{
+  margin-top: 120px;
+
+  .header_get_with_ace{
+    position: relative;
+
+    h3{
+      position: absolute;
+      z-index: 10;
+      padding-left: 16px;
+      font-weight: bold;
+    }
+  }
+
+  .card {
+    border: transparent;
+    position:relative;
+    height: 236px;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.08);
+    margin: 16px;
+    overflow: hidden;
+  }
+  .p-btn{
+    height: 160px;
+  }
+  p{
+    margin-top: 16px;
+    font-weight: lighter;
+    font-size: 15px;
+
+  }
+
+  .square_decoration {
+
+    height: 45px;
+    width: 80px;
+    background: #FDE74C;
+    opacity: 0.6;
+    transform: rotate(135deg);
+  }
+
+  img {
+    width: 180px;
+    position:absolute;
+    margin-left: 140px;
+    margin-top: 100px;
+  }
+}
+
+.sign-up-container{
+  width:846px;
+  position:relative;
+  margin: auto;
+  margin-top: 240px;
+
+  .card {
+
+    height:240px;
+    border: transparent;
+    position:relative;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.08);
+    margin: 16px;
+    overflow: hidden;
+
+    .card-text{
+      height: 208px;
+    }
+  }
+
+  h2 {
+    margin-top: 8px;
+    font-weight: bold;
+  }
+
+  p{
+    margin-top: 16px;
+    font-weight: lighter;
+    font-size: 15px;
+
+  }
+
+  img {
+    width: 350px;
+    height: 220px;
+    position:absolute;
+    margin-left: 420px;
+    margin-top: 8px;
+  }
+
+  a {
+    margin-top: 64px;
+
+  }
+  .bg-sign{
+    z-index: -10;
+    width: 1080px;
+    height: 550px;
+    margin-left: -40px;
+    margin-top: -400px;
+  }
+}
+
+
 
 
