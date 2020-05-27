@@ -20,10 +20,17 @@ class User < ApplicationRecord
   def meetings
     Meeting.where('interviewee_id = :user_id OR interviewer_id = :user_id', user_id: id)
   end
-  def meetings_as_interviewee
-    Meeting.where(interviewee_id: id)
+  def meetings_as_interviewee(attributes = {})
+    all_meetings = Meeting.where(interviewee_id: id)
+    if attributes[:past].present?
+      all_meetings = all_meetings.where("date < ?", Time.now).where(finished: true)
+    elsif attribute[:future].present?
+      all_meetings = all_meetings.where("date > ?", Time.now).where(finished: false)
+    end
+    return all_meetings
   end
-  def meetings_as_interviewer
+
+  def meetings_as_interviewer(attributes = {})
     Meeting.where(interviewer_id: id)
   end
   def reviews_as_interviewee
