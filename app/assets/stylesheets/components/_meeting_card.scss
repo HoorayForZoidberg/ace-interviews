@@ -1,0 +1,72 @@
+.card-box {
+    background-color: white;
+    border-left: solid 20px #F0896E;
+    max-width: 793px;
+    border-radius: 18px;
+    box-shadow: 0px 4.5px 14px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 200px;
+    &:hover {
+      box-shadow: 0px 6px 14px rgba(0, 0, 0, 0.12);
+      transform: translatey(-6px);
+      .photo{
+        transform: rotate(0.03turn);
+      }
+    }
+}
+  
+.photo {
+    height: 136px;
+    margin-top: 36px;
+    margin-left: 24px;
+    transition: all 0.3s ease-out;
+    
+}
+  
+.info {
+  margin-top: 40px;
+  margin-left: 32px
+}
+  
+h3 {
+    margin-bottom: 4px;
+}
+  
+.small-details {
+    font-size: 14px;
+    font-weight: regular;
+}
+  
+.expertise {
+    display: flex;
+    margin-bottom: 16px;
+    margin-top: 16px;
+    margin-left: 24px;
+}
+  
+.expertise-area {
+    font-size: 14px;
+    line-height: 32px;
+    padding-left: 12px;
+    padding-right: 12px;
+    height: 32px;
+    background-color: #F0896E;
+    margin-left: 4px;
+    margin-right: 4px;
+    border-radius: 100px;
+}
+  
+.meeting-details {
+    margin-top: 30px;
+    margin-left: 50px;
+    line-height: 2.5;
+}
+
+.details-header {
+  margin-top: 30px;
+  line-height: 2.5;
+  font-size: 18px;
+  text-decoration: underline;
+}
+  
