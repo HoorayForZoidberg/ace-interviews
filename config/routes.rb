@@ -3,15 +3,13 @@ Rails.application.routes.draw do
   root to: 'pages#home'
 
   resources :users, only: [:index, :show] do
-<<<<<<< HEAD
-    resources :meetings, only: [:new, :create]
-=======
-
     resources :meetings, only: [:create]
->>>>>>> 5d801a7002cb0e2d46d75075af0823966895c7f8
   end
 
   resources :meetings, only: [:index, :show, :edit, :update, :destroy] do
+    member do
+      get :chat
+    end
     resources :reviews, only: [:new, :create]
   end
 
