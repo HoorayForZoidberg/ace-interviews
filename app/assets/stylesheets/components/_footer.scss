@@ -1,0 +1,29 @@
+.footer{
+  background-color: #222;
+  color: #f8f8f8;
+  height: 240px;
+  padding: 16px;
+  margin-top: 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+.footer-social{
+  a{
+    color:#f8f8f8;
+    margin: 12px;
+    font-size: 22px;
+  }
+}
+
+.footer-logo {
+  width: 48px;
+  height: 18px;
+}
+
+.footer-symbol {
+  width: 88px;
+  height: 112px;
+  position: absolute;
+  margin-top: 96px;
+}

@@ -4,6 +4,7 @@
     <title>AceConsulting</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link rel="shortcut icon" type="image/png" href="/assets/favicon-32x32.png">
 
     <meta name="current_user" content="<%= user_signed_in? ? current_user.id : 0 %>">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,5 +16,10 @@
     <%= render 'shared/navbar' %>
     <%= render 'shared/flashes' %>
     <%= yield %>
+
+    <%= render 'shared/footer' %>
+    <!--<p class="notice"><%= notice %></p>-->
+    <!--<p class="alert"><%= alert %></p>-->
+
   </body>
 </html>

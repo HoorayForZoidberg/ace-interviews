@@ -7,7 +7,7 @@
   height: 32px;
   width: 32px;
   align-items: center;
-  margin-top: 4px;
+  margin: 4px 0px;
   border-radius: 50%;
 }
 
@@ -27,6 +27,14 @@
   padding: 4px 12px;
   display: flex;
   align-items: center;
+
+  p{
+    font-size: 15px;
+    margin: auto;
+    margin-right: 12px;
+    color: #222;
+    opacity: .8;
+  }
 }
 
 .navbar-links{
