@@ -1,0 +1,31 @@
+<div class="footer">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <%= link_to root_path, class: "row mt-4 justify-content-between" do %>
+          <%= image_tag "logo-ace-w.png", class: "footer-logo" %>
+        <% end %>
+
+        <img class="footer-symbol row d-flex align-items-end" src="/assets/symbol-ace.png" alt="">
+      </div>
+      <div class="footer-social col-6 mt-4">
+        <p class="d-flex justify-content-center">visit our social networks</p>
+          <div class=" d-flex justify-content-center">
+            <%= link_to "#" do %>
+              <i class="fab fa-linkedin-in"></i>
+            <% end %>
+            <%= link_to "#" do %>
+              <i class="fab fa-instagram"></i>
+            <% end %>
+            <%= link_to "#" do %>
+              <i class="fab fa-facebook-f"></i>
+            <% end %>
+            <%= link_to "#" do %>
+              <i class="fab fa-twitter"></i>
+            <% end %>
+          </div>
+      </div>
+      <div class="col"></div>
+    </div>
+  </div>
+</div>

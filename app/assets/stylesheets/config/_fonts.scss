@@ -30,7 +30,7 @@
    src: font-url('Lato/Lato-Light.ttf?#iefix') format('embedded-opentype'),
         font-url('Lato/Lato-Light.woff') format('woff'),
         font-url('Lato/Lato-Light.ttf') format('truetype');
-  font-weight: initial;
+  font-weight: inherit;
  }
 
   @font-face {
@@ -60,7 +60,7 @@
   font-weight: bolder;
  }
 
- $my-font: "Lato" normal;
+ $my-font: "Lato" inherit;
  $body-font: $my-font;
  $headers-font: $my-font;
  $base-size: 17px;

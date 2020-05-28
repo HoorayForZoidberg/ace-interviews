@@ -4,39 +4,85 @@
     <div class="hero row justify-content-center">
       <div class="hero_text justify-content-center">
         <div class="">
-          <h1>The easiest way to prepare <br>for your interview</h1>
-          <h4>Practice case studies with peers and <br>get ready to ace your interview</h4>
+          <h1 class="h1-ace">The easiest way to prepare <br>for your interview</h1>
+          <h4 class="h4-ace">Practice case studies with peers and <br>get ready to ace your interview</h4>
         </div>
       </div>
       <div class="hero_image col-5-sm">
         <img src="/assets/hero_big.png" alt="">
       </div>
     </div>
-        <div class="hero_banner justify-content-between justify-content-center">
-          <h5>Get started today</h5>
-          <%= link_to new_user_registration_path, class: "btn btn-primary " do %>
-            <p>SIGN-UP</p>
-          <% end %>
+      <div class="hero_banner justify-content-between justify-content-center">
+        <% if user_signed_in? %>
+            <h5 class="h5-ace">Look for a interview</h5>
+            <%= link_to users_path, class: "btn btn-ace btn-primary" do %>
+                SEARCH
+            <% end %>
+        <% else %>
+            <h5 class="h5-ace">Get started today</h5>
+
+              <a href="" class="btn btn-ace btn-primary" data-toggle="modal" data-target="#log-in-modal">SIGN-UP</a>
+
+        <% end %>
       </div>
   </div>
+  <%= render 'shared/modal-log-in' %>
   <!--I'm working now on it!!-->
   <div class="get_with_ace">
+    <div class="header_get_with_ace d-flex justify-content-start align-items-center">
+      <h3 class="h3-ace">What you get with ace</h3>
+      <div class="square_decoration"></div>
+    </div>
     <!--image bg here-->
-    <div class="cards_with_ace">
-      <div class="card">
-        <h6>Practice case interviews Get help from a coach </h6>
+    <div class="row cards_with_ace mt-4">
+      <div class="col card">
+        <h4 class="h4-ace">Practice case interviews</h4>
+        <div class="p-btn d-flex align-items-start flex-column">
+          <p class="mb-auto">Schedule mock interviews with other applicants. Get feedback and improve your confidence.</p>
+          <%= link_to "#", class: "btn btn-ace btn-primary" do %>
+            SEE MORE
+          <% end %>
+        </div>
+        <img src="/assets/home-card-1.png" alt="">
         <!--image bg here-->
       </div>
-      <div class="card">
-        <h6>Improve your maths drills</h6>
+      <div class="col card">
+        <h4 class="h4-ace">Improve your maths drills</h4>
+        <div class="p-btn d-flex align-items-start flex-column">
+          <p class="mb-auto">Kickstart your progress and book a 1-on-1 session with an industry expert, a math teacher or a communications coach.</p>
+          <%= link_to "#", class: "btn btn-ace btn-primary " do %>
+            SEE MORE
+          <% end %>
+        </div>
+        <img src="/assets/home-card-2.png" alt="">
         <!--image bg here-->
       </div>
-      <div class="card">
-        <h6> Practice case interviews</h6>
+      <div class="col card">
+        <h4 class="h4-ace"> Practice case interviews</h4>
+        <div class="p-btn d-flex align-items-start flex-column">
+          <p class="mb-auto">Get up to speed with your mental math and polish your analytical skills in our built-in maths room.</p>
+          <%= link_to "#", class: "btn btn-ace btn-primary" do %>
+            SEE MORE
+          <% end %>
+        </div>
+        <img src="/assets/home-card-3.png" alt="">
         <!--image bg here-->
       </div>
 
     </div>
+  </div>
+  <div class="sign-up-container">
+    <div class="card d-flex ">
+      <div class="card-text d-flex align-items-start flex-column ">
+        <h2>Sign-up to our web</h2>
+        <p class="mb-auto">and have the best preparation for your job interview</p>
+        <%= link_to "#", class: "btn btn-ace btn-primary" do %>
+          SIGN-UP
+        <% end %>
+      </div>
+      <img src="assets/home-card-sign-in.png" >
 
+    </div>
+    <img class="bg-sign"src="/assets/bg-sign-up.png">
   </div>
 </div>
