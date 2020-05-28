@@ -18,6 +18,7 @@ gem 'turbolinks', '~> 5'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.7'
 gem 'groupdate'
+gem 'pg_search'
 gem 'chartkick', github: 'ankane/chartkick', branch: 'edge'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'

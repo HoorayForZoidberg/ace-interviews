@@ -15,4 +15,5 @@ Rails.application.routes.draw do
 
   resources :reviews, only: :index
   resources :live_chats, only: :create
+  resources :universities, only: :index
 end
