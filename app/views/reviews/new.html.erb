@@ -10,6 +10,7 @@
     <%= f.input :reasoning_originality, as: :integer %>
     <%= f.input :communication, as: :integer %>
     <%= f.input :confidence, as: :integer %>
+    <%= f.input :readiness, as: :integer %>
   <% elsif @meeting.interviewee == current_user%>
   <!--reviewing the interviewer -->
     <%= f.input :full_attention, as: :integer %>
