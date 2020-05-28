@@ -62,5 +62,4 @@ private
   def find_meeting
     @meeting = Meeting.find(params[:id])
   end
-
 end
