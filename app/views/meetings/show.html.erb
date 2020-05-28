@@ -54,8 +54,10 @@
         <div class="details">
           <div class="small-details">Date:  <strong><%= @meeting.date.strftime("%e %B %Y") %></strong></div>
           <div class="small-details">Time:  <strong><%= @meeting.date.strftime("%l:%M") %></strong></div>
-          <div class="small-details">Industry:  <strong><%= @question.industry %></strong></div>
-          <div class="small-details">Discipline:  <strong><%= @question.discipline %></strong></div>
+          <% if @question %>
+            <div class="small-details">Industry:  <strong><%= @question.industry %></strong></div>
+            <div class="small-details">Discipline:  <strong><%= @question.discipline %></strong></div>
+          <% end %>
         </div>
       </div>
     </div>
