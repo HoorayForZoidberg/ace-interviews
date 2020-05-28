@@ -36,6 +36,7 @@ gem 'simple_form'
 gem 'devise'
 gem 'cloudinary', '~> 1.12.0'
 gem 'universities'
+gem 'redis', '~> 4.0'
 
 group :development, :test do
   gem 'pry-byebug'
