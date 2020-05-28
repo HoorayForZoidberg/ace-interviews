@@ -1,0 +1,25 @@
+<%= simple_form_for @review, url:meeting_reviews_path(current_user), method: :post do |f| %>
+  <!--For everyone at the beginning -->
+  <%= f.input :would_repeat, as: :boolean %>
+  <%= f.input :polite_engaged, as: :integer %>
+
+  <% if @meeting.interviewer == current_user %>
+  <!--reviewing the applicant -->
+    <%= f.input :structure, as: :integer %>
+    <%= f.input :math, as: :integer %>
+    <%= f.input :reasoning_originality, as: :integer %>
+    <%= f.input :communication, as: :integer %>
+    <%= f.input :confidence, as: :integer %>
+  <% elsif @meeting.interviewee == current_user%>
+  <!--reviewing the interviewer -->
+    <%= f.input :full_attention, as: :integer %>
+    <%= f.input :case_knowledge, as: :integer %>
+    <%= f.input :case_presentation, as: :integer %>
+    <%= f.input :accurate_feedback, as: :integer %>
+    <%= f.input :constructive_criticism, as: :integer %>
+    <%= f.input :level_adapted, as: :integer %>
+  <% end %>
+  <!--For everyone at the end -->
+  <%= f.input :content, as: :text %>
+  <%= f.submit  %>
+<% end %>
