@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_27_115605) do
+ActiveRecord::Schema.define(version: 2020_05_28_111310) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,12 +57,25 @@ ActiveRecord::Schema.define(version: 2020_05_27_115605) do
   end
 
   create_table "reviews", force: :cascade do |t|
-    t.integer "rating"
     t.text "content"
     t.bigint "meeting_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "would_repeat"
+    t.integer "polite_engaged"
+    t.integer "structure"
+    t.integer "math"
+    t.integer "readiness"
+    t.integer "reasoning_originality"
+    t.integer "communication"
+    t.integer "confidence"
+    t.integer "case_knowledge"
+    t.integer "case_presentation"
+    t.integer "accurate_feedback"
+    t.integer "constructive_criticism"
+    t.integer "level_adapted"
+    t.integer "full_attention"
     t.index ["meeting_id"], name: "index_reviews_on_meeting_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end

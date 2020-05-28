@@ -25,7 +25,7 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:content, :rating)
+    params.require(:review).permit(:content, :readiness, :would_repeat, :polite_engaged, :structure, :math, :reasoning_originality, :communication, :confidence, :case_knowledge, :case_presentation, :accurate_feedback, :constructive_criticism, :level_adapted, :full_attention)
   end
 
 end
