@@ -18,7 +18,7 @@ class MeetingsController < ApplicationController
     if @meeting.save
       redirect_to meeting_path(@meeting)
     else
-      render :new
+      redirect_to users_path, alert: @meeting.errors.full_messages.to_sentence
     end
   end
 
