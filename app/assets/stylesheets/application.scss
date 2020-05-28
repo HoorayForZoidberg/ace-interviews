@@ -11,6 +11,22 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+@import "components/footer";
+@import "components/btn-ace";
+@import "components/headers";
 @import "pages/user/index";
 @import "pages/meetings/index";
 
+
+
+
+*::selection {
+    background-color: rgba(88, 180, 174, .6);
+    border-radius: 4px;
+    color: #F8F8F8;
+}
+
+*::-moz-selection {
+    background-color: rgba(88, 180, 174, .6);
+    color: #F8F8F8;
+}
