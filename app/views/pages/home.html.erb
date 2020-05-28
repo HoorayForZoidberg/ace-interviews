@@ -1,5 +1,5 @@
 
-<div class="container">
+<div class="container" data-controller="registrations">
   <div class="container_hero-baner">
     <div class="hero row justify-content-center">
       <div class="hero_text justify-content-center">
@@ -76,9 +76,9 @@
       <div class="card-text d-flex align-items-start flex-column ">
         <h2>Sign-up to our web</h2>
         <p class="mb-auto">and have the best preparation for your job interview</p>
-        <%= link_to "#", class: "btn btn-ace btn-primary" do %>
-          SIGN-UP
-        <% end %>
+        <button type="button" class="btn btn-ace btn-primary" data-toggle="modal" data-target="#sign-up-modal">
+          Sign up
+        </button>
       </div>
       <img src="assets/home-card-sign-in.png" >
 
@@ -86,3 +86,8 @@
     <img class="bg-sign"src="/assets/bg-sign-up.png">
   </div>
 </div>
+
+
+<%= render "shared/modal-sign-up" %>
+
+
