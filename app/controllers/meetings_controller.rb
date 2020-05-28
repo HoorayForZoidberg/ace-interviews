@@ -12,6 +12,8 @@ class MeetingsController < ApplicationController
 
     @meeting = Meeting.new(meeting_params)
     @meeting.interviewee = current_user
+    @interviewer = User.find(params[:user_id])
+    @meeting.interviewer = @interviewer
     @meeting.finished = false
     if @meeting.save
       redirect_to meeting_path(@meeting)
@@ -24,7 +26,7 @@ class MeetingsController < ApplicationController
     @review = Review.new
     @interviewee = @meeting.interviewee
     @interviewer = @meeting.interviewer
-    @question = Question.find(@meeting.question_id)
+    @question = Question.find(@meeting.question_id) if @meeting.question_id?
     @other_user = current_user.is(@interviewer, @interviewee)
 
     return redirect_to root_path, notice: "This meeting has ended." if @meeting.finished?
@@ -49,7 +51,7 @@ class MeetingsController < ApplicationController
 private
 
   def meeting_params
-    params.require(:meeting).permit(:date, :interviewer_id, :question_id)
+    params.require(:meeting).permit(:date, :question_id)
   end
 
   def find_meeting
