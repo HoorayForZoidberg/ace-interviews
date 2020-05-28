@@ -20,12 +20,13 @@
             <% end %>
         <% else %>
             <h5 class="h5-ace">Get started today</h5>
-            <%= link_to new_user_registration_path, class: "btn btn-ace btn-primary " do %>
-              SIGN-UP
-            <% end %>
+
+              <a href="" class="btn btn-ace btn-primary" data-toggle="modal" data-target="#log-in-modal">SIGN-UP</a>
+
         <% end %>
       </div>
   </div>
+  <%= render 'shared/modal-log-in' %>
   <!--I'm working now on it!!-->
   <div class="get_with_ace">
     <div class="header_get_with_ace d-flex justify-content-start align-items-center">
@@ -36,9 +37,9 @@
     <div class="row cards_with_ace mt-4">
       <div class="col card">
         <h4 class="h4-ace">Practice case interviews</h4>
-        <div class="p-btn">
-          <p>Schedule mock interviews with other applicants. Get feedback and improve your confidence.</p>
-          <%= link_to "#", class: "btn btn-ace btn-primary mt-5" do %>
+        <div class="p-btn d-flex align-items-start flex-column">
+          <p class="mb-auto">Schedule mock interviews with other applicants. Get feedback and improve your confidence.</p>
+          <%= link_to "#", class: "btn btn-ace btn-primary" do %>
             SEE MORE
           <% end %>
         </div>
@@ -47,9 +48,9 @@
       </div>
       <div class="col card">
         <h4 class="h4-ace">Improve your maths drills</h4>
-        <div class="p-btn">
-          <p>Kickstart your progress and book a 1-on-1 session with an industry expert, a math teacher or a communications coach.</p>
-          <%= link_to "#", class: "btn btn-ace btn-primary mt-4" do %>
+        <div class="p-btn d-flex align-items-start flex-column">
+          <p class="mb-auto">Kickstart your progress and book a 1-on-1 session with an industry expert, a math teacher or a communications coach.</p>
+          <%= link_to "#", class: "btn btn-ace btn-primary " do %>
             SEE MORE
           <% end %>
         </div>
@@ -58,9 +59,9 @@
       </div>
       <div class="col card">
         <h4 class="h4-ace"> Practice case interviews</h4>
-        <div class="p-btn">
-          <p>Get up to speed with your mental math and polish your analytical skills in our built-in maths room.</p>
-          <%= link_to "#", class: "btn btn-ace btn-primary mt-5" do %>
+        <div class="p-btn d-flex align-items-start flex-column">
+          <p class="mb-auto">Get up to speed with your mental math and polish your analytical skills in our built-in maths room.</p>
+          <%= link_to "#", class: "btn btn-ace btn-primary" do %>
             SEE MORE
           <% end %>
         </div>
@@ -71,10 +72,10 @@
     </div>
   </div>
   <div class="sign-up-container">
-    <div class="card d-flex justify-content-between">
-      <div class="card-text flex-column justify-content-between">
+    <div class="card d-flex ">
+      <div class="card-text d-flex align-items-start flex-column ">
         <h2>Sign-up to our web</h2>
-        <p>and have the best preparation for your job interview</p>
+        <p class="mb-auto">and have the best preparation for your job interview</p>
         <%= link_to "#", class: "btn btn-ace btn-primary" do %>
           SIGN-UP
         <% end %>
