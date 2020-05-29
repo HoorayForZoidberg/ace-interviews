@@ -22,7 +22,6 @@
           </div>
         </div>
         <ul>
-          <li><i class="fas fa-star"></i>  <strong>Specialized:</strong> Tecnology</li>
           <li><i class="fas fa-graduation-cap"></i>  <%= user.university.name %></li>
           <li><i class="fas fa-briefcase"></i>  <strong><%= pluralize(user.meetings_as_interviewer(past:true).count, 'interview')  %></strong> given </li>
           <li><i class="fas fa-briefcase"></i>  <strong><%= pluralize(user.meetings_as_interviewee(past:true).count, 'case')  %></strong> solved </li>
