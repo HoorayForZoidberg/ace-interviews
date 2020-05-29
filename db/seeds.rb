@@ -97,13 +97,13 @@ end
 #   puts "added #{@university.name} from #{@university.address}"
 # end
 
-# 50.times{
-#   @question = Question.new()
-#   @question.industry = industry.sample
-#   @question.discipline = discipline.sample
-#   @question.save!
-#   puts "added question #{@question.id} about #{@question.discipline} in #{@question.industry}"
-# }
+50.times{
+  @question = Question.new()
+  @question.industry = industry.sample
+  @question.discipline = discipline.sample
+  @question.save!
+  puts "added question #{@question.id} about #{@question.discipline} in #{@question.industry}"
+}
 
 # 100.times {
 #   @user = User.new()
