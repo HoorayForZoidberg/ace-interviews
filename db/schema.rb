@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(version: 2020_05_28_111310) do
   end
 
   create_table "reviews", force: :cascade do |t|
+    t.integer "readiness"
     t.text "content"
     t.bigint "meeting_id", null: false
     t.bigint "user_id", null: false
@@ -66,7 +67,6 @@ ActiveRecord::Schema.define(version: 2020_05_28_111310) do
     t.integer "polite_engaged"
     t.integer "structure"
     t.integer "math"
-    t.integer "readiness"
     t.integer "reasoning_originality"
     t.integer "communication"
     t.integer "confidence"
