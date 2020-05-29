@@ -52,11 +52,14 @@ class User < ApplicationRecord
   end
 
 
-  def ratings_as_interviewer(attributes = {})
-    reviews = reviews_as_interviewer(past: true).map(&:rating)
+  def ratings_as_interviewer(attributes = {}, review_field)
+    reviews = reviews_as_interviewer(past: true).map do |review|
+      review.send(review_field)
+    end
     return 0 if reviews.empty?
     reviews.sum.fdiv(reviews.size)
   end
+
 
   def ratings_as_interviewee(attributes = {}, review_field)
     reviews = reviews_as_interviewee(past: true).map do |review|
@@ -65,6 +68,7 @@ class User < ApplicationRecord
     return 0 if reviews.empty?
     reviews.sum.fdiv(reviews.size)
   end
+
 end
 
 

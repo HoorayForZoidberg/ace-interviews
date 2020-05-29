@@ -18,7 +18,7 @@
             <%= link_to user_path(user) do %>
               <h6><%= user.first_name %> <%= user.last_name%></h6>
             <% end %>
-            <%= user.ratings_as_interviewer %>
+            <%= user.ratings_as_interviewer({past: true}, :readiness).round(2) %>
           </div>
         </div>
         <ul>

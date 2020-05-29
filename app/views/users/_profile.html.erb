@@ -2,17 +2,17 @@
   <div class="card-profile">
     <div class="card-profile-text">
       <h5><%= user.first_name %> <%= user.last_name %></h5>
-      <% user.ratings_as_interviewer(past: true).to_i.times do %>
+      <% user.ratings_as_interviewer({past: true}, :readiness).to_i.times do %>
         <i class="fas fa-star small"></i>
       <% end %>
-      <% (5 - user.ratings_as_interviewer(past: true).to_i).times do %>
+      <% (5 - user.ratings_as_interviewer({past: true}, :readiness).to_i).times do %>
         <i class="far fa-star small"></i>
       <% end %>
       <ul>
         <li><%= pluralize(user.meetings_as_interviewee(past: true).count, 'case') %> solved </li>
         <li>Average rating: <%= user.ratings_as_interviewee({past: true}, :readiness).round(2) %></li>
         <li><%= pluralize(user.meetings_as_interviewer(past:true).count, 'interview') %> given</li>
-        <li>Average rating as an interviewer: <%= user.ratings_as_interviewer(past: true).round(2) %></li>
+        <li>Average rating as an interviewer: <%= user.ratings_as_interviewer({past: true}, :readiness).round(2) %></li>
       </ul>
     </div>
     <div class="card-profile-avatar">
@@ -35,7 +35,7 @@
             <% interviewer = meeting.interviewer %>
             <p><%= interviewee.first_name.capitalize %></p>
             <p><%= interviewee.university.name %></p>
-            <p><%= user.first_name.capitalize %> was given a rating of <%= interviewer.rating_as_interviewer.round(2) %> as an interviewer</p>
+            <p><%= user.first_name.capitalize %> was given a rating of <%= interviewer.ratings_as_interviewer({past: true}, :readiness).round(2) %> as an interviewer</p>
             <% if interviewee.avatar.attached? %>
               <%= cl_image_tag interviewee.avatar.key, alt: "user-avatar", width: 100, height: 100, crop: :fill %>
             <% else %>
