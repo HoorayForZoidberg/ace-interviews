@@ -9,7 +9,7 @@
         </div>
       </div>
       <div class="hero_image col-5-sm">
-        <img src="/assets/hero_big.png" alt="">
+        <%= image_tag 'hero_big' %>
       </div>
     </div>
       <div class="hero_banner justify-content-between justify-content-center">
@@ -17,7 +17,7 @@
         <%= link_to users_path, class: "btn btn-ace btn-primary" do %>LET'S GO!<% end %>
       </div>
   </div>
-  <%= render 'shared/modal-log-in' %>
+  <%= render 'shared/modal-sign-up', user: @user %>
   <!--I'm working now on it!!-->
   <div class="get_with_ace">
     <div class="header_get_with_ace d-flex justify-content-start align-items-center">
@@ -34,8 +34,7 @@
             SEE MORE
           <% end %>
         </div>
-        <img src="/assets/home-card-1.png" alt="">
-        <!--image bg here-->
+        <%= image_tag 'home-card-1' %>
       </div>
       <div class="col card">
         <h4 class="h4-ace">Improve your maths drills</h4>
@@ -45,8 +44,7 @@
             SEE MORE
           <% end %>
         </div>
-        <img src="/assets/home-card-2.png" alt="">
-        <!--image bg here-->
+        <%= image_tag 'home-card-2' %>
       </div>
       <div class="col card">
         <h4 class="h4-ace"> Practice case interviews</h4>
@@ -56,8 +54,7 @@
             SEE MORE
           <% end %>
         </div>
-        <img src="/assets/home-card-3.png" alt="">
-        <!--image bg here-->
+        <%= image_tag 'home-card-3' %>
       </div>
 
     </div>
@@ -67,13 +64,11 @@
       <div class="card-text d-flex align-items-start flex-column ">
         <h2>Sign-up to our web</h2>
         <p class="mb-auto">and have the best preparation for your job interview</p>
-        <%= link_to "#", class: "btn btn-ace btn-primary" do %>
-          SIGN-UP
-        <% end %>
+        <a href="" class="btn btn-ace btn-primary" data-toggle="modal" data-target="#sign-up-modal">SIGN-UP</a>
       </div>
-      <img src="assets/home-card-sign-in.png" >
+      <%= image_tag 'home-card-sign-in' %>
 
     </div>
-    <img class="bg-sign"src="/assets/bg-sign-up.png">
+    <%= image_tag 'bg-sign-up', class: "bg-sign" %>
   </div>
 </div>
