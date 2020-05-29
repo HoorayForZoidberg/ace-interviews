@@ -7,7 +7,7 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body d-flex justtify-column">
+      <div class="modal-body">
         <%= simple_form_for(resource, as: resource_name, url: user_session_path) do |f| %>
         <div class="form-inputs">
           <%= f.input :email,
@@ -17,14 +17,12 @@
           <%= f.input :password,
                       required: false,
                       input_html: { autocomplete: "current-password" } %>
-          <%#= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
         </div>
 
         <div class="form-actions">
           <%= f.button :submit, "Log in", class: "btn btn-ace btn-primary" %>
         </div>
         <% end %>
-        <%#= render "./devise/shared/links", resource_name: resource_name %>
       </div>
     </div>
   </div>

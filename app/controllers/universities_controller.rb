@@ -1,4 +1,6 @@
 class UniversitiesController < ApplicationController
+  skip_before_action :authenticate_user!
+
   def index
     @universities = University.all
     @universities = @universities.search(params[:search]) if params[:search].present?
@@ -7,4 +9,5 @@ class UniversitiesController < ApplicationController
     end
     render json: data
   end
+
 end
