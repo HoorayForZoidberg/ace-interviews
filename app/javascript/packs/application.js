@@ -32,9 +32,6 @@ import { initStarRating } from '../plugins/init_star_rating';
 import "select2/dist/css/select2.css"
 
   // Call your functions here, e.g:
-  initSelect2();
-  initStarRating();
-
 import { Application } from "stimulus"
 import { definitionsFromContext } from "stimulus/webpack-helpers"
 
@@ -42,7 +39,5 @@ document.addEventListener('turbolinks:load', () => {
   const application = Application.start()
   const context = require.context("controllers", true, /_controller\.js$/)
   application.load(definitionsFromContext(context))
-   Chartkick.eachChart( function(chart) {
-    chart.redraw();
-  });
+  initStarRating();
 });
