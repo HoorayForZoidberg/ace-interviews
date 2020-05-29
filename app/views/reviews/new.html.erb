@@ -1,26 +1,133 @@
 <%= simple_form_for @review, url:meeting_reviews_path(current_user), method: :post do |f| %>
   <!--For everyone at the beginning -->
-  <%= f.input :would_repeat, as: :boolean %>
-  <%= f.input :polite_engaged, as: :integer %>
+  <div class="rating_header">
 
-  <% if @meeting.interviewer == current_user %>
-  <!--reviewing the applicant -->
-    <%= f.input :structure, as: :integer %>
-    <%= f.input :math, as: :integer %>
-    <%= f.input :reasoning_originality, as: :integer %>
-    <%= f.input :communication, as: :integer %>
-    <%= f.input :confidence, as: :integer %>
-    <%= f.input :readiness, as: :integer %>
-  <% elsif @meeting.interviewee == current_user%>
-  <!--reviewing the interviewer -->
-    <%= f.input :full_attention, as: :integer %>
-    <%= f.input :case_knowledge, as: :integer %>
-    <%= f.input :case_presentation, as: :integer %>
-    <%= f.input :accurate_feedback, as: :integer %>
-    <%= f.input :constructive_criticism, as: :integer %>
-    <%= f.input :level_adapted, as: :integer %>
-  <% end %>
-  <!--For everyone at the end -->
-  <%= f.input :content, as: :text %>
-  <%= f.submit  %>
+    <% if @meeting.interviewer == current_user %>
+      <h3 class="text-center">Please rate the applicant's performance</h3>
+    <% else %>
+      <h3 class="text-center">Please rate the interviewer's performance</h3>
+    <% end %>
+  </div>
+  <div class="rating_card_first m-auto">
+    <div class="rating_stars">
+        <%= f.input :would_repeat, as: :boolean, label: "I would do more interviews with this person" %>
+    </div>
+  </div>
+  <div class="rating_chevron"><i class="fas fa-chevron-circle-down"></i></div>
+  <div class="filler"></div>
+<div class=" rating_card">
+    <div class="rating_stars">
+       <%= f.input :polite_engaged,
+                    collection: (1..5).to_a,
+                    :input_html => {
+                      :class => "star_rating"
+                    },
+                    label: "This person was polite and engaged"
+                    %>
+    </div>
+  </div>
+  <div class="rating_chevron"><i class="fas fa-chevron-circle-down"></i></div>
+  <div class="filler"></div>
+
+    <% if @meeting.interviewer == current_user %>
+    <!--reviewing the applicant -->
+      <div class=" rating_card ">
+        <div class=" rating_stars">
+         <%= f.input :structure,
+                      collection: (1..5).to_a,
+                      :input_html => {
+                        :class => "star_rating"
+                      },
+                      label: "The answer was well structured"
+                      %>
+        </div>
+      </div>
+      <div class="rating_chevron"><i class="fas fa-chevron-circle-down"></i></div>
+      <div class="filler"></div>
+
+      <div class=" rating_card ">
+        <div class=" rating_stars">
+         <%= f.input :math,
+                      collection: (1..5).to_a,
+                      :input_html => {
+                        :class => "star_rating"
+                      },
+                      label: "The applicant was quick and accurate with the math"
+                      %>
+        </div>
+      </div>
+      <div class="rating_chevron"><i class="fas fa-chevron-circle-down"></i></div>
+      <div class="filler"></div>
+
+      <div class=" rating_card ">
+        <div class=" rating_stars">
+         <%= f.input :reasoning_originality,
+                      collection: (1..5).to_a,
+                      :input_html => {
+                        :class => "star_rating"
+                      },
+                      label: "The applicant had good reasoning and came up with interesting ideas and questions"
+                      %>
+        </div>
+      </div>
+      <div class="rating_chevron"><i class="fas fa-chevron-circle-down"></i></div>
+      <div class="filler"></div>
+
+      <div class=" rating_card ">
+        <div class=" rating_stars">
+         <%= f.input :communication,
+                      collection: (1..5).to_a,
+                      :input_html => {
+                        :class => "star_rating"
+                      },
+                      label: "The applicant communicated well"
+                      %>
+        </div>
+      </div>
+      <div class="rating_chevron"><i class="fas fa-chevron-circle-down"></i></div>
+      <div class="filler"></div>
+
+      <div class=" rating_card ">
+        <div class=" rating_stars">
+         <%= f.input :confidence,
+                      collection: (1..5).to_a,
+                      :input_html => {
+                        :class => "star_rating"
+                      },
+                      label: "The applicant was confident but not arrogant"
+                      %>
+        </div>
+      </div>
+      <div class="rating_chevron"><i class="fas fa-chevron-circle-down"></i></div>
+      <div class="filler"></div>
+
+      <div class=" rating_card ">
+        <div class=" rating_stars">
+         <%= f.input :readiness,
+                      collection: (1..5).to_a,
+                      :input_html => {
+                        :class => "star_rating"
+                      },
+                      label: "This applicant is ready for a real interview"
+                      %>
+        </div>
+      </div>
+      <div class="rating_chevron"><i class="fas fa-chevron-circle-down"></i></div>
+      <div class="filler"></div>
+
+
+
+    <% elsif @meeting.interviewee == current_user%>
+    <!--reviewing the interviewer -->
+      <%= f.input :full_attention, as: :integer %>
+      <%= f.input :case_knowledge, as: :integer %>
+      <%= f.input :case_presentation, as: :integer %>
+      <%= f.input :accurate_feedback, as: :integer %>
+      <%= f.input :constructive_criticism, as: :integer %>
+      <%= f.input :level_adapted, as: :integer %>
+    <% end %>
+    <!--For everyone at the end -->
+    <%= f.input :content, as: :text %>
+
+    <%= f.submit  %>
 <% end %>

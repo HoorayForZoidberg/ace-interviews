@@ -27,7 +27,9 @@ require("chart.js")
 // External imports
 import "bootstrap";
 import "../plugins/flatpickr"
+
 // Internal imports, e.g:
+import { initStarRating } from '../plugins/init_star_rating';
 import { initSelect2 } from '../components/init_select2';
 import "select2/dist/css/select2.css"
 
@@ -35,5 +37,6 @@ document.addEventListener('turbolinks:load', () => {
 
   // Call your functions here, e.g:
   initSelect2();
+  initStarRating();
 
 });
