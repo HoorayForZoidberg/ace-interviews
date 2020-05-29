@@ -29,7 +29,7 @@
   <div class="rating_chevron"><i class="fas fa-chevron-circle-down"></i></div>
   <div class="filler"></div>
 
-    <% if @meeting.interviewer == current_user %>
+    <% if @meeting.interviewee == current_user %>
     <!--reviewing the applicant -->
       <div class=" rating_card ">
         <div class=" rating_stars">
@@ -118,7 +118,7 @@
 
 
 
-    <% elsif @meeting.interviewee == current_user%>
+    <% elsif @meeting.interviewer == current_user%>
     <!--reviewing the interviewer -->
       <div class=" rating_card ">
         <div class=" rating_stars">

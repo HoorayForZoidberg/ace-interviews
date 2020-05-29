@@ -9,8 +9,8 @@ class ReviewsController < ApplicationController
   def create
     @user = current_user
     @review = Review.new(review_params)
-    @review.meeting = @meeting
     @review.user = current_user
+    @review.meeting = @meeting
     if @review.save
       redirect_to user_path(@user)
     else
