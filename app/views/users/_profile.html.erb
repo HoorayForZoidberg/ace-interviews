@@ -27,24 +27,26 @@
     <h5 class="m-0">Recent interviews given by <%= user.first_name.capitalize %></h5>
   </div>
   <% if user.meetings_as_interviewer(past: true).any? %>
-    <% user.meetings_as_interviewer(past: true).each do |meeting| %>
-      <div class="col-sm-6">
-        <div class="card-meeting">
-          <div class="partner-info">
-            <% interviewee = meeting.interviewee %>
-            <% interviewer = meeting.interviewer %>
-            <p><%= interviewee.first_name.capitalize %></p>
-            <p><%= interviewee.university.name %></p>
-            <p><%= user.first_name.capitalize %> was given a rating of <%= interviewer.ratings_as_interviewer({past: true}, :readiness).round(2) %> as an interviewer</p>
-            <% if interviewee.avatar.attached? %>
-              <%= cl_image_tag interviewee.avatar.key, alt: "user-avatar", width: 100, height: 100, crop: :fill %>
-            <% else %>
-              <%= image_tag "avatar-default.png", alt: "user-avatar", width: 100, height: 100, crop: :fill %>
-            <% end %>
+    <div class="row">
+      <% user.meetings_as_interviewer(past: true).each do |meeting| %>
+        <div class="col-sm-6">
+          <div class="card-meeting">
+            <div class="partner-info">
+              <% interviewee = meeting.interviewee %>
+              <% interviewer = meeting.interviewer %>
+              <p><%= interviewee.first_name.capitalize %></p>
+              <p><%= interviewee.university.name %></p>
+              <p><%= user.first_name.capitalize %> was given a rating of <%= interviewer.ratings_as_interviewer({past: true}, :readiness).round(2) %> as an interviewer</p>
+              <% if interviewee.avatar.attached? %>
+                <%= cl_image_tag interviewee.avatar.key, alt: "user-avatar", width: 100, height: 100, crop: :fill %>
+              <% else %>
+                <%= image_tag "avatar-default.png", alt: "user-avatar", width: 100, height: 100, crop: :fill %>
+              <% end %>
+            </div>
           </div>
         </div>
+      <% end %>
       </div>
-    <% end %>
   <% else %>
     <div class="no-interviews">
       <p> <%= user.first_name.capitalize %> has not given any interviews to peers yet</p>
