@@ -12,12 +12,13 @@
 
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <div class="container-navbar-links ">
-      <%= link_to user_path(current_user.id) , class: "navbar-links" do %>
-        My Dashboard
-      <% end %>
-    </div>
-
+    <% if user_signed_in? %>
+      <div class="container-navbar-links ">
+        <%= link_to user_path(current_user.id) , class: "navbar-links" do %>
+          My Dashboard
+        <% end %>
+      </div>
+    <% end %>
     <div class="">
       <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
