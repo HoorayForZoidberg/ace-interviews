@@ -46,15 +46,14 @@
           <div class="card-progress">
             <div class="card-progress-text">
               <h5>Recent progress</h5>
-              <p>With supporting text below as a natural lead-in to additional content.</p>
-              <%= line_chart @users.group_by_hour_of_day(:created_at).count %>
+              <%= line_chart @users.group_by_minute(:created_at).count %>
             </div>
           </div>
         </div>
         <div class="col-sm-6">
           <div class="card-progress">
             <div class="card-progress-text">
-              <h5>Time spent practicing this week</h5>
+              <h5>Cases practiced per industry category</h5>
               <%= pie_chart @questions.group(:industry).count %>
             </div>
           </div>
@@ -64,23 +63,25 @@
         <h5 class="m-0">Upcoming Interviews</h5>
       </div>
       <% if @user.meetings_as_interviewee(future: true).any? %>
-        <% @user.meetings_as_interviewee(future: true).each_with_index do |meeting, index| %>
-          <div class="col-sm-6 <%= 'pl-0' if index.even? %>">
-            <div class="card-meeting">
-              <div class="partner-info">
-                <% interviewer = meeting.interviewer %>
-                <p><%= interviewer.first_name.capitalize %></p>
-                <p><%= interviewer.university.name %></p>
-                <p><%= interviewer.ratings_as_interviewer({past: true}, :readiness).round(2) %></p>
-                <% if interviewer.avatar.attached? %>
-                  <%= cl_image_tag interviewer.avatar.key, alt: "user-avatar", width: 100, height: 100, crop: :fill %>
-                <% else %>
-                  <%= image_tag "avatar-default.png", alt: "user-avatar", width: 100, height: 100, crop: :fill %>
-                <% end %>
+        <div class="row">
+          <% @user.meetings_as_interviewee(future: true).each_with_index do |meeting, index| %>
+            <div class="col-sm-6 <%= 'pl-0' if index.even? %>">
+              <div class="card-meeting">
+                <div class="partner-info">
+                  <% interviewer = meeting.interviewer %>
+                  <p><%= interviewer.first_name.capitalize %></p>
+                  <p><%= interviewer.university.name %></p>
+                  <p><%= interviewer.ratings_as_interviewer({past: true}, :readiness).round(2) %></p>
+                  <% if interviewer.avatar.attached? %>
+                    <%= cl_image_tag interviewer.avatar.key, alt: "user-avatar", width: 100, height: 100, crop: :fill %>
+                  <% else %>
+                    <%= image_tag "avatar-default.png", alt: "user-avatar", width: 100, height: 100, crop: :fill %>
+                  <% end %>
+                </div>
               </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       <% else %>
         <div class="no-interviews mx-auto">
           <p>You don't have any interviews scheduled yet</p>
@@ -111,23 +112,25 @@
         <h5 class="m-0">Upcoming Interviews </h5>
       </div>
       <% if @user.meetings_as_interviewee(future: true).any? %>
-        <% @user.meetings_as_interviewer(future: true).each_with_index do |meeting, index| %>
-          <div class="col-sm-6 <%= 'pl-0' if index.even? %>">
-            <div class="card-meeting">
-              <div class="partner-info">
-                <% interviewee = meeting.interviewee %>
-                <p><%= interviewee.first_name.capitalize %></p>
-                <p><%= interviewee.university.name %></p>
-                <p><%= interviewee.ratings_as_interviewee({past: true}, :readiness).round(2) %></p>
-                <% if interviewee.avatar.attached? %>
-                  <%= cl_image_tag interviewee.avatar.key, alt: "user-avatar", width: 100, height: 100, crop: :fill %>
-                <% else %>
-                  <%= image_tag "avatar-default.png", alt: "user-avatar", width: 100, height: 100, crop: :fill %>
-                <% end %>
+        <div class="row">
+          <% @user.meetings_as_interviewer(future: true).each_with_index do |meeting, index| %>
+            <div class="col-sm-6 <%= 'pl-0' if index.even? %>">
+              <div class="card-meeting">
+                <div class="partner-info">
+                  <% interviewee = meeting.interviewee %>
+                  <p><%= interviewee.first_name.capitalize %></p>
+                  <p><%= interviewee.university.name %></p>
+                  <p><%= interviewee.ratings_as_interviewee({past: true}, :readiness).round(2) %></p>
+                  <% if interviewee.avatar.attached? %>
+                    <%= cl_image_tag interviewee.avatar.key, alt: "user-avatar", width: 100, height: 100, crop: :fill %>
+                  <% else %>
+                    <%= image_tag "avatar-default.png", alt: "user-avatar", width: 100, height: 100, crop: :fill %>
+                  <% end %>
+                </div>
               </div>
             </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
       <% else %>
         <div class="no-interviews mx-auto">
           <p>You don't have any upcoming interviews. Accepting interview requests from other users will help you improve your skills</p>
