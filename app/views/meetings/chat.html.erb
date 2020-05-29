@@ -1,7 +1,7 @@
 <div class="container">
   <%= link_to 'Back', meeting_path, class: "" %>
-  
-  <div class="wrapper" id="video-chat" data-id="<%= @meeting.id %>">
+
+  <<div class="wrapper" id="video-chat" data-id="<%= @meeting.id %>">
     <div class="mb-3">
       <%= button_tag 'Join Meeting', id: 'join-meeting', name: "join-meeting-#{@meeting.id}", class:'link link-primary mr-2' %>
       <%= button_tag 'Leave Meeting', id: 'leave-meeting', name: "leave-meeting-#{@meeting.id}", class:'link link-secondary d-none' %>
@@ -12,4 +12,5 @@
       </div>
     </div>
   </div>
+  <%= link_to 'Finish', new_meeting_review_path(@meeting.id), class: "btn btn-primary btn-ace mt-5" %>
 </div>
