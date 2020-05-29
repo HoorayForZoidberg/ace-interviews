@@ -69,9 +69,13 @@
     <div class="sign-up-container">
       <div class="card d-flex ">
         <div class="card-text d-flex align-items-start flex-column ">
-          <h2>Sign-up to our web</h2>
+          <h2><%= user_signed_in? ? 'Start looking for interviewers' : 'Sign-up to our web' %></h2>
           <p class="mb-auto">and have the best preparation for your job interview</p>
-          <a href="" class="btn btn-ace btn-primary" data-toggle="modal" data-target="#sign-up-modal">SIGN-UP</a>
+          <% if user_signed_in? %>
+            <%= link_to 'Search', users_path, class:'btn btn-ace btn-primary' %>
+          <% else %>
+            <a href="" class="btn btn-ace btn-primary" data-toggle="modal" data-target="#sign-up-modal">SIGN-UP</a>
+          <% end %>
         </div>
         <%= image_tag 'home-card-sign-in.png' %>
         <%= image_tag 'bg-sign-up.png', class: "bg-sign" %>
