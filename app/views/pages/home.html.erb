@@ -5,8 +5,8 @@
       <div class="hero row justify-content-center">
         <div class="hero_text justify-content-center">
           <div class="">
-            <h1 class="h1-ace">The easiest way to prepare <br>for your interview</h1>
-            <h4 class="h4-ace">Practice case studies with peers and <br>get ready to ace your interview</h4>
+            <h1 class="h1-ace">Get ready to ACE your<br>consultancy interview!</h1>
+            <h4 class="h4-ace">Monitor your progress and prepare in a<br>competitive community.</h4>
           </div>
         </div>
         <div class="hero_image col-5-sm">
@@ -15,15 +15,8 @@
       </div>
     </div>
     <div class="hero_banner justify-content-between justify-content-center">
-      <% if user_signed_in? %>
-          <h5 class="h5-ace">Look for a interview</h5>
-          <%= link_to users_path, class: "btn btn-ace btn-primary" do %>
-              SEARCH
-          <% end %>
-      <% else %>
-          <h5 class="h5-ace">Get started today</h5>
-            <a href="" class="btn btn-ace btn-primary" data-toggle="modal" data-target="#sign-up-modal">SIGN-UP</a>
-      <% end %>
+      <h5 class="h5-ace mr-3">Find an interviewer</h5>
+      <%= link_to users_path, class: "btn btn-ace btn-primary" do %>LET'S GO!<% end %>
     </div>
   <!--I'm working now on it!!-->
     <div class="get_with_ace">
