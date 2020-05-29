@@ -72,7 +72,6 @@
     padding: 16px;
     border-radius: 8px;
     box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.08);
-    margin: 16px;
     overflow: hidden;
   }
 
@@ -97,12 +96,12 @@
   img {
     width: 180px;
     position:absolute;
-    margin-left: 160px;
-    margin-top: 100px;
+    bottom: 0;
+    right: 0;
   }
 }
 
-.sign-up-container{
+.sign-up-container {
   width:846px;
   position:relative;
   margin: auto;
@@ -115,7 +114,6 @@
     padding: 16px;
     border-radius: 8px;
     box-shadow: -4px 4px 8px rgba(0, 0, 0, 0.08);
-    margin: 16px;
     overflow: hidden;
 
     .card-text{

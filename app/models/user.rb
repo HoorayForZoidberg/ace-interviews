@@ -45,20 +45,38 @@ class User < ApplicationRecord
                            .flatten
                            .reject { |review| review.user == self }
   end
-  def rating_as_interviewee(attributes = {})
-    reviews = reviews_as_interviewee(past: true).map(&:rating)
-    return 0 if reviews.empty?
-    reviews.sum.fdiv(reviews.size)
-  end
   def reviews_as_interviewer(attributes = {})
     meetings_as_interviewer(past: true).map(&:reviews)
                            .flatten
                            .reject { |review| review.user == self }
   end
-  def rating_as_interviewer(attributes = {})
-    reviews = reviews_as_interviewer(past: true).map(&:rating)
+
+
+  def ratings_as_interviewer(attributes = {}, review_field)
+    reviews = reviews_as_interviewer(past: true).map do |review|
+      review.send(review_field)
+    end
+    return 0 if reviews.empty?
+    reviews.sum.fdiv(reviews.size)
+  end
+
+
+  def ratings_as_interviewee(attributes = {}, review_field)
+    reviews = reviews_as_interviewee(past: true).map do |review|
+      review.send(review_field)
+    end
     return 0 if reviews.empty?
     reviews.sum.fdiv(reviews.size)
   end
 
 end
+
+
+
+
+
+
+
+
+
+
