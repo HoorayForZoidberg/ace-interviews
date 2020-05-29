@@ -18,10 +18,11 @@
             <%= f.input :last_name,
                         required: true,
                         input_html: { autocomplete: "last name" }%>
-            <%= f.association :university,
+            <%= f.input :university,
+                        as: :select,
                         required: false,
                         label: false,
-                        input_html: { class: 'select2', data: { target: 'registrations.select2' } }%>
+                        input_html: { class: 'select2', name: 'user[university_id]', data: { target: 'registrations.select2' } }%>
             <%= f.input :address,
                         required: true,
                         input_html: { autocomplete: "enter your address" }%>
