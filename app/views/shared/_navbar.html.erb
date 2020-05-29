@@ -13,13 +13,8 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <div class="container-navbar-links ">
-      <% if current_user %>
-        <%= link_to users_path, class: "navbar-links" do %>
-          Interviews
-        <% end %>
-        <%= link_to user_path(current_user.id) , class: "navbar-links" do %>
-          dashboard
-        <% end %>
+      <%= link_to user_path(current_user.id) , class: "navbar-links" do %>
+        My Dashboard
       <% end %>
     </div>
 
