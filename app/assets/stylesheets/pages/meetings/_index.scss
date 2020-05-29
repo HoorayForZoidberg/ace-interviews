@@ -1,1 +1,97 @@
 @import "show";
+
+.header-index {
+  margin-top: 60px;
+  background-color: $green;
+  width: 640px;
+  height: 120px;
+  border-radius: 8px;
+  padding: 32px 20px ;
+
+  h4 {
+    color: $gray;
+
+  }
+
+
+}
+
+.index-container {
+  margin-top: -20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;;
+  grid-gap: 20px;
+  grid-row-end: 3;
+  grid-row: span 3;
+}
+
+.image-grid {
+  grid-column: 3 ;
+  grid-row: 1 / span 2;
+
+  img {
+    margin-top: 80px;
+    width: 380px;
+
+  }
+
+}
+
+.ace-card {
+  background-color: #f8f8f8;
+  border:transparent;
+  padding: 16px;
+  display:grid;
+  box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.06);
+
+  h6 {
+    font-size: 18px;
+    font-weight: bolder;
+  }
+
+  img{
+    width: 72px;
+    height: 72px;
+    border-radius: 4px;
+    object-fit: cover;
+  }
+
+  ul {
+      margin-top: 4px;
+  }
+
+  li {
+    list-style-type: none;
+    margin-left: -12px;
+    line-height : 26px;
+    color: #666;
+    font-size: 13px;
+
+  }
+
+  i {
+    color: #ccc;
+    margin-right: 8px;
+  }
+
+  p{
+     margin-bottom: 0;
+     width: 160px;
+  }
+}
+
+.ace-card-top {
+  display: flex;
+  height: 80px;
+}
+
+.ace-card-header {
+  margin-top: 8px;
+  margin-left: 20px;
+
+  a:hover{
+    text-decoration: none;
+  }
+
+}
