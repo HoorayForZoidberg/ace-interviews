@@ -9,6 +9,17 @@
   font-family: "Lato" inherit;
 }
 
+.rating_card_last {
+  // background: yellow;
+  margin: auto;
+  width: 75%;
+  text-align: center;
+  height: 20vh;
+  vertical-align: middle;
+  font-size: 22px;
+  font-family: "Lato" inherit;
+}
+
 .rating_card {
   // background: yellow;
   margin: auto;
@@ -47,4 +58,21 @@
 
 .filler {
   height: 30vh;
+}
+
+.rating_card_button {
+  color: white;
+  padding: .5rem 1rem;
+  font-weight: bold;
+  box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.06);
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #222323;
+  transition: background 0.3s ease;
+}
+
+.rating_card_button:hover {
+  background: white;
+  color: #222323;
+  transition: background 0.3s ease;
 }

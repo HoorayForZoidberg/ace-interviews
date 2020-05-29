@@ -42,6 +42,7 @@
                       %>
         </div>
       </div>
+
       <div class="rating_chevron"><i class="fas fa-chevron-circle-down"></i></div>
       <div class="filler"></div>
 
@@ -119,15 +120,102 @@
 
     <% elsif @meeting.interviewee == current_user%>
     <!--reviewing the interviewer -->
-      <%= f.input :full_attention, as: :integer %>
-      <%= f.input :case_knowledge, as: :integer %>
-      <%= f.input :case_presentation, as: :integer %>
-      <%= f.input :accurate_feedback, as: :integer %>
-      <%= f.input :constructive_criticism, as: :integer %>
-      <%= f.input :level_adapted, as: :integer %>
+      <div class=" rating_card ">
+        <div class=" rating_stars">
+         <%= f.input :full_attention,
+                      collection: (1..5).to_a,
+                      :input_html => {
+                        :class => "star_rating"
+                      },
+                      label: "The interviewer gave me her/his full attention"
+                      %>
+        </div>
+      </div>
+
+      <div class="rating_chevron"><i class="fas fa-chevron-circle-down"></i></div>
+      <div class="filler"></div>
+
+      <div class=" rating_card ">
+        <div class=" rating_stars">
+         <%= f.input :case_knowledge,
+                      collection: (1..5).to_a,
+                      :input_html => {
+                        :class => "star_rating"
+                      },
+                      label: "The interviewer knew the case well"
+                      %>
+        </div>
+      </div>
+
+      <div class="rating_chevron"><i class="fas fa-chevron-circle-down"></i></div>
+      <div class="filler"></div>
+
+      <div class=" rating_card ">
+        <div class=" rating_stars">
+         <%= f.input :case_presentation,
+                      collection: (1..5).to_a,
+                      :input_html => {
+                        :class => "star_rating"
+                      },
+                      label: "The interviewer presented the case well"
+                      %>
+        </div>
+      </div>
+
+      <div class="rating_chevron"><i class="fas fa-chevron-circle-down"></i></div>
+      <div class="filler"></div>
+
+      <div class=" rating_card ">
+        <div class=" rating_stars">
+         <%= f.input :accurate_feedback,
+                      collection: (1..5).to_a,
+                      :input_html => {
+                        :class => "star_rating"
+                      },
+                      label: "The interviewer gave accurate and actionable feedback"
+                      %>
+        </div>
+      </div>
+
+      <div class="rating_chevron"><i class="fas fa-chevron-circle-down"></i></div>
+      <div class="filler"></div>
+
+      <div class=" rating_card ">
+        <div class=" rating_stars">
+         <%= f.input :constructive_criticism,
+                      collection: (1..5).to_a,
+                      :input_html => {
+                        :class => "star_rating"
+                      },
+                      label: "The interviewer gave constructive_criticism"
+                      %>
+        </div>
+      </div>
+
+      <div class="rating_chevron"><i class="fas fa-chevron-circle-down"></i></div>
+      <div class="filler"></div>
+
+      <div class=" rating_card ">
+        <div class=" rating_stars">
+         <%= f.input :level_adapted,
+                      collection: (1..5).to_a,
+                      :input_html => {
+                        :class => "star_rating"
+                      },
+                      label: "The interviewer adapted the level of the case to my level"
+                      %>
+        </div>
+      </div>
+
+      <div class="rating_chevron"><i class="fas fa-chevron-circle-down"></i></div>
+      <div class="filler"></div>
+
     <% end %>
     <!--For everyone at the end -->
-    <%= f.input :content, as: :text %>
-
-    <%= f.submit  %>
+    <div class="rating_card_last">
+      <%= f.input :content, as: :text, label: "Please leave a comment" %>
+    </div>
+    <div class="rating_card_last">
+      <%= f.submit 'Send my review',:class => "rating_card_button" %>
+    </div>
 <% end %>

@@ -5,19 +5,19 @@
         Your meeting with <%= @other_user.first_name.capitalize %>
         is underway. Click the button below to enter.
       </h3>
-      <%= link_to 'Enter the meeting', chat_meeting_path, class: "btn btn-primary btn-ace mt-5" %>
+      <%= link_to 'Enter the meeting', chat_meeting_path(@meeting.id), class: "btn btn-primary btn-ace mt-5" %>
     <% elsif DateTime.now > (@meeting.date - 300.seconds)%>
       <h3 class="mt-5">
         The room for your meeting with <%= @other_user.first_name.capitalize %>
         is open and will start shortly! Click the button below to enter.
       </h3>
-      <%= link_to 'Enter the meeting', chat_meeting_path, class: "btn btn-primary btn-ace mt-5" %>
+      <%= link_to 'Enter the meeting', chat_meeting_path(@meeting.id), class: "btn btn-primary btn-ace mt-5" %>
     <% else %>
       <h3 class="mt-5">
         The option to begin your meeting with <%= @other_user.first_name.capitalize %>
         will appear 5 minutes before the meeting is due to start.
       </h3>
-      
+
     <% end %>
   </div>
 
@@ -40,14 +40,14 @@
         <div class="small-details">Member Since: <%= @other_user.created_at.strftime("%d/%m/%Y") %></div>
       </div>
 
-  
+
       <div class="expertise">
         <div class="expertise-area">Consumer Goods</div>
         <div class="expertise-area">Technology</div>
         <div class="expertise-area">Media</div>
       </div>
     </div>
-    
+
     <div class="col-sm-12 col-md-5">
       <div class="meeting-details">
         <div class="details-header">Meeting Details</div>
