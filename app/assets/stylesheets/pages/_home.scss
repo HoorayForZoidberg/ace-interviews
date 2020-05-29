@@ -1,5 +1,5 @@
 // Specific CSS for your home-page
-.container_hero-baner{
+.container-hero-baner{
   margin-top: 80px;
   position:relative;
 }
@@ -9,7 +9,7 @@
   margin-top:40px;
 }
 
-.hero_text {
+.hero-text {
   display: flex;
   align-items: center;
   margin: 16px;
@@ -23,7 +23,7 @@
   }
 }
 
-.hero_image {
+.hero-image {
   height: 460px;
   margin: 16px;
 
@@ -32,7 +32,7 @@
     }
 }
 
-.hero_banner{
+.hero-banner{
   position: absolute;
   margin-top: -80px;
   margin-left: 320px;
@@ -53,10 +53,10 @@
     }
 }
 
-.get_with_ace{
+.get-with-ace{
   margin-top: 120px;
 
-  .header_get_with_ace{
+  .header-get-with-ace{
     position: relative;
 
     h3{
@@ -87,7 +87,7 @@
     font-size: 15px;
   }
 
-  .square_decoration {
+  .square-decoration {
     height: 45px;
     width: 80px;
     background: #FDE74C;
