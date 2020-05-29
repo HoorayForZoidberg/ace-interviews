@@ -20,13 +20,11 @@
             <% end %>
         <% else %>
             <h5 class="h5-ace">Get started today</h5>
-
-              <a href="" class="btn btn-ace btn-primary" data-toggle="modal" data-target="#log-in-modal">SIGN-UP</a>
-
+              <a href="" class="btn btn-ace btn-primary" data-toggle="modal" data-target="#sign-up-modal">SIGN-UP</a>
         <% end %>
       </div>
   </div>
-  <%= render 'shared/modal-log-in' %>
+  <%= render 'shared/modal-sign-up', user: @user %>
   <!--I'm working now on it!!-->
   <div class="get_with_ace">
     <div class="header_get_with_ace d-flex justify-content-start align-items-center">
@@ -73,9 +71,7 @@
       <div class="card-text d-flex align-items-start flex-column ">
         <h2>Sign-up to our web</h2>
         <p class="mb-auto">and have the best preparation for your job interview</p>
-        <%= link_to "#", class: "btn btn-ace btn-primary" do %>
-          SIGN-UP
-        <% end %>
+        <a href="" class="btn btn-ace btn-primary" data-toggle="modal" data-target="#sign-up-modal">SIGN-UP</a>
       </div>
       <%= image_tag 'home-card-sign-in' %>
 
