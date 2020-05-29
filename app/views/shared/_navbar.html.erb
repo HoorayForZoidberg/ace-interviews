@@ -12,19 +12,16 @@
 
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <div class="container-navbar-links ">
-      <%= link_to "#", class: "navbar-links" do %>
-        <p>Interviews</p>
-      <% end %>
-      <%= link_to "#", class: "navbar-links" do %>
-        <p>Interview room</p>
-      <% end %>
-    </div>
-
-    <div class="navbar-card">
+    <% if user_signed_in? %>
+      <div class="container-navbar-links ">
+        <%= link_to user_path(current_user.id) , class: "navbar-links" do %>
+          My Dashboard
+        <% end %>
+      </div>
+    <% end %>
+    <div class="">
       <ul class="navbar-nav mr-auto">
       <% if user_signed_in? %>
-        <p><%= current_user.first_name %></p>
         <li class="nav-item dropdown">
           <% if current_user&.avatar&.attached? %>
             <%= cl_image_tag current_user.avatar.key, class: "avatar-navbar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
@@ -38,7 +35,9 @@
         </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link" %>
+          <button type="button" class="nav-link border-0 bg-transparent" data-toggle="modal" data-target="#log-in-modal">
+            Log in
+          </button>
         </li>
       <% end %>
     </ul>
@@ -47,3 +46,7 @@
   </div>
   </div>
 </div>
+
+
+<%= render "shared/modal-log-in" %>
+

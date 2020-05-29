@@ -1,50 +1,57 @@
 <div class="container">
-  <div>
-    <h2>You are looking at the interviewers</h2>
+  <div class="header-index">
+    <h4 class="h4-ace">You are looking at the interviewers</h4>
   </div>
-  <% @users.each do |user| %>
-    <div class="card p-2">
-      <% if user&.avatar&.attached? %>
-        <%= cl_image_tag user.avatar.key, style: "width: 160px; heigh:160px; overflow: hidden;" %>
-      <% else %>
-        <%= image_tag "avatar-default.png", style: "width: 160px; heigh:160px; overflow: hidden;" %>
-      <% end %>
+  <div class="index-container">
+    <div class="image-grid">
+      <%= image_tag 'image-index.png' %>
+    </div>
+    <% @users.each do |user| %>
+      <div class="card ace-card">
+        <div class="ace-card-top">
+          <% if user&.avatar&.attached? %>
+            <%= cl_image_tag user.avatar.key %>
+          <% else %>
+            <%= image_tag "avatar-default.png" %>
+          <% end %>
+          <div class="ace-card-header">
+            <%= link_to user_path(user) do %>
+              <h6><%= user.first_name %> <%= user.last_name%></h6>
+            <% end %>
+            <%= user.ratings_as_interviewer({past: true}, :readiness).round(2) %>
+          </div>
+        </div>
+        <ul>
+          <li><i class="fas fa-star"></i>  <strong>Specialized:</strong> Tecnology</li>
+          <li><i class="fas fa-graduation-cap"></i>  <%= user.university.name %></li>
+          <li><i class="fas fa-briefcase"></i>  <strong><%= pluralize(user.meetings_as_interviewer(past:true).count, 'interview')  %></strong> given </li>
+          <li><i class="fas fa-briefcase"></i>  <strong><%= pluralize(user.meetings_as_interviewee(past:true).count, 'case')  %></strong> solved </li>
+        </ul>
 
-      <%= link_to user_path(user) do %>
-        <h5><%= user.first_name %> <%= user.last_name%></h5>
-      <% end %>
-      <%= user.rating_as_interviewer %>
-      <ul>
-        <li><strong>Specialized:</strong> Tecnology</li>
-        <li><%= user.university.name %></li>
-        <li> <strong><%= pluralize(user.meetings_as_interviewer(past:true).count, 'interview')  %></strong> given </li>
-        <li> <strong><%= pluralize(user.meetings_as_interviewee(past:true).count, 'case')  %></strong> solved </li>
-      </ul>
+        <p class="btn btn-ace btn-primary"  data-toggle="modal" data-target="#a<%= user.id %>" >I choose you</p>
 
-      <p class="btn btn-primary"  data-toggle="modal" data-target="#a<%= user.id %>" >I choose you</p>
 
-      <div class="modal fade" id="a<%= user.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLongTitle">Pick a date and time</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <%= simple_form_for ([user, @meeting]) do |f| %>
-                    <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
-                    <%= f.button :submit, "Go", class: "btn btn-primary" %>
-              <% end %>
+        <div class="modal fade" id="a<%= user.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Pick a date and time</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <%= simple_form_for ([user, @meeting]) do |f| %>
+                      <%= f.input :date, as: :string, required: false, input_html: {class: "datepicker"} %>
+                      <%= f.button :submit, "Go", class: "btn btn-primary" %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-
-
-<% end %>
+    <% end %>
+  </div>
 </div>
 
 

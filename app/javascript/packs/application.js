@@ -2,13 +2,11 @@
 // present in this directory. You're encouraged to place your actual application logic in
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
-
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
-require("chartkick")
-require("chart.js")
+
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -29,14 +27,23 @@ import "bootstrap";
 import "../plugins/flatpickr"
 
 // Internal imports, e.g:
+
 import { initStarRating } from '../plugins/init_star_rating';
 import { initSelect2 } from '../components/init_select2';
 import "select2/dist/css/select2.css"
-
-document.addEventListener('turbolinks:load', () => {
 
   // Call your functions here, e.g:
   initSelect2();
   initStarRating();
 
+import { Application } from "stimulus"
+import { definitionsFromContext } from "stimulus/webpack-helpers"
+
+document.addEventListener('turbolinks:load', () => {
+  const application = Application.start()
+  const context = require.context("controllers", true, /_controller\.js$/)
+  application.load(definitionsFromContext(context))
+   Chartkick.eachChart( function(chart) {
+    chart.redraw();
+  });
 });
