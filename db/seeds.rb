@@ -112,17 +112,17 @@ end
   @user.password = "TestTest"
   @user.email = "#{@user.first_name}.#{@user.last_name}#{rand(1..1000)}@gmail.com"
   @user.address = "#{rand(12..200)} rue de la #{first_name.sample}, #{last_name.sample}ville"
-  @user.university_id = rand(10..50)
+  @user.university = University.all.sample
   @user.save!
   puts "Created #{@user.first_name} #{@user.last_name} who lives at #{@user.address} and who's email is #{@user.email}"
 }
 100.times{
   @meeting = Meeting.new()
-  @meeting.interviewee_id = rand(1..90)
-  @meeting.interviewer_id = @meeting.interviewee_id + rand(1..10)
+  @meeting.interviewee = User.all.sample
+  @meeting.interviewer = (User.all - [@meeting.interviewee]).sample
   @meeting.finished = true
-  @meeting.question_id = rand(1..49)
-  @meeting.date = DateTime.current + rand(24..240)
+  @meeting.question = Question.all.sample
+  @meeting.date = DateTime.current + rand(24..240).hours
   @meeting.save!
   puts "Created a meeting between #{@meeting.interviewee_id} user and #{@meeting.interviewer_id} on the #{@meeting.date} with question #{@meeting.question_id}"
 
