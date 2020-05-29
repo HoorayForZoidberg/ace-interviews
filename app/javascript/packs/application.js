@@ -39,8 +39,5 @@ document.addEventListener('turbolinks:load', () => {
   const application = Application.start()
   const context = require.context("controllers", true, /_controller\.js$/)
   application.load(definitionsFromContext(context))
-   Chartkick.eachChart( function(chart) {
-    chart.redraw();
-  });
   initStarRating();
 });
