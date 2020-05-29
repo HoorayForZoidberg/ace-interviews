@@ -64,8 +64,8 @@
         <h5 class="m-0">Upcoming Interviews</h5>
       </div>
       <% if @user.meetings_as_interviewee(future: true).any? %>
-        <% @user.meetings_as_interviewee(future: true).each do |meeting| %>
-          <div class="col-sm-6">
+        <% @user.meetings_as_interviewee(future: true).each_with_index do |meeting, index| %>
+          <div class="col-sm-6 <%= 'pl-0' if index.even? %>">
             <div class="card-meeting">
               <div class="partner-info">
                 <% interviewer = meeting.interviewer %>
@@ -111,8 +111,8 @@
         <h5 class="m-0">Upcoming Interviews </h5>
       </div>
       <% if @user.meetings_as_interviewee(future: true).any? %>
-        <% @user.meetings_as_interviewer(future: true).each do |meeting| %>
-          <div class="col-sm-6">
+        <% @user.meetings_as_interviewer(future: true).each_with_index do |meeting, index| %>
+          <div class="col-sm-6 <%= 'pl-0' if index.even? %>">
             <div class="card-meeting">
               <div class="partner-info">
                 <% interviewee = meeting.interviewee %>

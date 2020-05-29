@@ -1,6 +1,6 @@
 <div class=container>
   <div class="wait-message">
-    <% if DateTime.now > @meeting.date%>
+    <% if DateTime.now > @meeting.date %>
       <h3 class="mt-5">
         Your meeting with <%= @other_user.first_name.capitalize %>
         is underway. Click the button below to enter.
