@@ -42,5 +42,6 @@ class Review < ApplicationRecord
 
     def not_applicant?
       self.user != self.meeting.interviewee
+    end
 
 end
