@@ -1,60 +1,60 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container">
+<div class="controller" data-controller="registrations">
+  <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+    <div class="container">
 
 
-  <%= link_to root_path, class: "navbar-brand" do %>
-    <%= image_tag "logo_ace_bg.png" %>
-    <% end %>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <% if user_signed_in? %>
-      <div class="container-navbar-links ">
-        <%= link_to users_path, class: "navbar-links" do %>
-          Find an Interviewer
-        <% end %>
-        <%= link_to user_path(current_user.id) , class: "navbar-links" do %>
-          My Dashboard
-        <% end %>
-      </div>
-    <% end %>
-    <div class="">
-      <ul class="navbar-nav mr-auto">
-      <% if user_signed_in? %>
-        <li class="nav-item dropdown">
-          <% if current_user&.avatar&.attached? %>
-            <%= cl_image_tag current_user.avatar.key, class: "avatar-navbar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <% else %>
-            <%= image_tag "avatar-default.png", class: "avatar-navbar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <% end %>
-          <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-            <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
-            <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-          </div>
-        </li>
-      <% else %>
-        <li class="nav-item">
-          <button type="button" class="nav-link border-0 bg-transparent" data-toggle="modal" data-target="#log-in-modal">
-            Log in
-          </button>
-        </li>
-        <li class="nav-item">
-          <button type="button" class="nav-link border-0 bg-transparent" data-toggle="modal" data-target="#sign-up-modal">
-            Sign up
-          </button>
-        </li>
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <%= image_tag "logo_ace_bg.png" %>
       <% end %>
-    </ul>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <% if user_signed_in? %>
+        <div class="container-navbar-links ">
+          <%= link_to users_path, class: "navbar-links" do %>
+            Find an Interviewer
+          <% end %>
+          <%= link_to user_path(current_user.id) , class: "navbar-links" do %>
+            My Dashboard
+          <% end %>
+        </div>
+      <% end %>
+      <div class="">
+        <ul class="navbar-nav mr-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item dropdown">
+            <% if current_user&.avatar&.attached? %>
+              <%= cl_image_tag current_user.avatar.key, class: "avatar-navbar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% else %>
+              <%= image_tag "avatar-default.png", class: "avatar-navbar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+            <% end %>
+            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+              <%= link_to "Profile", user_path(current_user), class: "dropdown-item" %>
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+            </div>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <button type="button" class="nav-link border-0 bg-transparent" data-toggle="modal" data-target="#log-in-modal">
+              Log in
+            </button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="nav-link border-0 bg-transparent" data-toggle="modal" data-target="#sign-up-modal">
+              Sign up
+            </button>
+          </li>
+        <% end %>
+      </ul>
+      </div>
+
     </div>
-
+    </div>
   </div>
-  </div>
+  <%= render "shared/modal-log-in" %>
+  <%= render "shared/modal-sign-up" %>
 </div>
-
-
-<%= render "shared/modal-log-in" %>
-
