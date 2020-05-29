@@ -1,81 +1,83 @@
-
-<div class="container">
-  <div class="container-hero-baner">
-    <div class="hero row justify-content-center">
-      <div class="hero-text justify-content-center">
-        <div class="">
-          <h1>The easiest way to prepare <br>for your interview</h1>
-          <h4>Practice case studies with peers and <br>get ready to ace your interview</h4>
+<div class="controller" data-controller="registrations">
+  <div class="container">
+    <div class="container-hero-baner">
+      <div class="hero row justify-content-center">
+        <div class="hero-text justify-content-center">
+          <div class="">
+            <h1 class="h1-ace">Get ready to ACE your<br>consultancy interview!</h1>
+            <h4 class="h4-ace">Monitor your progress and prepare in a<br>competitive community.</h4>
+          </div>
+        </div>
+        <div class="hero-image col-5-sm">
+          <%= image_tag 'hero_big.png' %>
         </div>
       </div>
-      <div class="hero-image col-5-sm">
-        <%= image_tag 'hero_big' %>
-      </div>
     </div>
-      <div class="hero-banner justify-content-between justify-content-center">
-        <% if user_signed_in? %>
-            <h5>Look for a interview</h5>
-            <%= link_to users_path, class: "btn btn-ace btn-primary" do %>
-                SEARCH
-            <% end %>
-        <% else %>
-            <h5>Get started today</h5>
-              <a href="" class="btn btn-ace btn-primary" data-toggle="modal" data-target="#sign-up-modal">SIGN-UP</a>
-        <% end %>
-      </div>
-  </div>
-  <%= render 'shared/modal-sign-up', user: @user %>
+    <div class="hero-banner justify-content-between justify-content-center">
+      <h5 class="h5-ace mr-3">Find an interviewer</h5>
+      <%= link_to users_path, class: "btn btn-ace btn-primary" do %>LET'S GO!<% end %>
+    </div>
   <!--I'm working now on it!!-->
-  <div class="get-with-ace">
-    <div class="header-get-with-ace d-flex justify-content-start align-items-center">
-      <h3>What you get with ace</h3>
-      <div class="square-decoration"></div>
-    </div>
-    <!--image bg here-->
-    <div class="row mt-4">
-      <div class="col card">
-        <h4 class="h4-ace">Practice case interviews</h4>
-        <div class="p-btn d-flex align-items-start flex-column">
-          <p class="mb-auto">Schedule mock interviews with other applicants. Get feedback and improve your confidence.</p>
-          <%= link_to "#", class: "btn btn-ace btn-primary" do %>
-            SEE MORE
-          <% end %>
-        </div>
-        <%= image_tag 'home-card-1' %>
+    <div class="get-with-ace">
+      <div class="header-get-with-ace d-flex justify-content-between align-items-center">
+        <h3 class="h3-ace">What you get with ace</h3>
+        <div class="square-decoration"></div>
       </div>
-      <div class="col card">
-        <h4>Improve your maths drills</h4>
-        <div class="p-btn d-flex align-items-start flex-column">
-          <p class="mb-auto">Kickstart your progress and book a 1-on-1 session with an industry expert, a math teacher or a communications coach.</p>
-          <%= link_to "#", class: "btn btn-ace btn-primary " do %>
-            SEE MORE
-          <% end %>
+      <!--image bg here-->
+      <div class="row mt-4 justify-content-around">
+        <div class="col-4">
+          <div class="card mx-2">
+            <h4 class="h4-ace">Practice case interviews</h4>
+            <div class="p-btn d-flex align-items-start flex-column">
+              <p class="mb-auto">Schedule mock interviews with other applicants. Get feedback and improve your confidence.</p>
+              <%= link_to "#", class: "btn btn-ace btn-primary" do %>
+                SEE MORE
+              <% end %>
+            </div>
+            <%= image_tag 'home-card-1.png' %>
+          </div>
         </div>
-        <%= image_tag 'home-card-2' %>
-      </div>
-      <div class="col card">
-        <h4> Practice case interviews</h4>
-        <div class="p-btn d-flex align-items-start flex-column">
-          <p class="mb-auto">Get up to speed with your mental math and polish your analytical skills in our built-in maths room.</p>
-          <%= link_to "#", class: "btn btn-ace btn-primary" do %>
-            SEE MORE
-          <% end %>
-        </div>
-        <%= image_tag 'home-card-3' %>
-      </div>
+        <!--image bg here-->
+        <div class="col-4">
+          <div class="card mx-2">
+            <h4 class="h4-ace">Professional coaching</h4>
+            <div class="p-btn d-flex align-items-start flex-column">
+              <p class="mb-auto">Kickstart your progress and book a 1-on-1 session with an industry expert, a math teacher or a communications coach.</p>
+              <%= link_to "#", class: "btn btn-ace btn-primary" do %>
+                SEE MORE
+              <% end %>
+            </div>
+           <%= image_tag 'home-card-2.png' %>
+          </div>
 
-    </div>
-  </div>
-  <div class="sign-up-container">
-    <div class="card d-flex ">
-      <div class="card-text d-flex align-items-start flex-column ">
-        <h2>Sign-up to our web</h2>
-        <p class="mb-auto">and have the best preparation for your job interview</p>
-        <a href="" class="btn btn-ace btn-primary" data-toggle="modal" data-target="#sign-up-modal">SIGN-UP</a>
-      </div>
-      <%= image_tag 'home-card-sign-in' %>
+        </div>
+        <div class="col-4">
+          <div class="card mx-2">
+            <h4 class="h4-ace">Improve your maths drills</h4>
+            <div class="p-btn d-flex align-items-start flex-column">
+              <p class="mb-auto">Get up to speed with your mental math and polish your analytical skills in our built-in maths room.</p>
+              <%= link_to "#", class: "btn btn-ace btn-primary" do %>
+                SEE MORE
+              <% end %>
+            </div>
+            <%= image_tag 'home-card-3.png' %>
+          </div>
+        </div>
 
+      </div>
     </div>
-    <%= image_tag 'bg-sign-up', class: "bg-sign" %>
+    <div class="sign-up-container">
+      <div class="card d-flex ">
+        <div class="card-text d-flex align-items-start flex-column ">
+          <h2>Sign-up to our web</h2>
+          <p class="mb-auto">and have the best preparation for your job interview</p>
+          <a href="" class="btn btn-ace btn-primary" data-toggle="modal" data-target="#sign-up-modal">SIGN-UP</a>
+        </div>
+        <%= image_tag 'home-card-sign-in.png' %>
+        <%= image_tag 'bg-sign-up.png', class: "bg-sign" %>
+      </div>
+    </div>
+
   </div>
+  <%= render "shared/modal-sign-up" %>
 </div>

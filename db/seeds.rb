@@ -8,7 +8,14 @@
 
 # THE REAL SEED STARTS BELOW THIS LINE
 #----------------------------------------
-#
+if Rails.env.development?
+  Review.destroy_all
+  Meeting.destroy_all
+  User.destroy_all
+  University.destroy_all
+  Question.destroy_all
+end
+
 require 'date'
 
 first_name = ["Eileen",
@@ -72,23 +79,23 @@ industry = ["Consumer Goods",
             "Telecom / Mobile",
             "Sports",
             "Other"]
-university_one = ["Ireland", "France", "UK", "'Merica", "Colombia", "China", "Chonkers"]
-university_two = ["School", "University", "College", "Educatorium"]
-university_three = ["of Tech", "of Business", "of Economics", "of Arts", "of Paleontology", "of Arts", "of Sports", "of Imagination", "of Philosophy"]
+# university_one = ["Ireland", "France", "UK", "'Merica", "Colombia", "China", "Chonkers"]
+# university_two = ["School", "University", "College", "Educatorium"]
+# university_three = ["of Tech", "of Business", "of Economics", "of Arts", "of Paleontology", "of Arts", "of Sports", "of Imagination", "of Philosophy"]
 
-# Universities.get_all.each do |university|
-#   university = University.create! name: university.name, address: university.country
-#   puts "#{university.name} created"
-# end
+Universities.get_all.first(100).each do |university|
+  university = University.create! name: university.name, address: university.country
+  puts "#{university.name} created"
+end
 
 # --- ALREADY SUCCESSFULLY RAN ---
-50.times do
-  @university = University.new()
-  @university.name = "#{university_one.sample} #{university_two.sample} #{university_three.sample}"
-  @university.address = "#{university_one}"
-  @university.save
-  puts "added #{@university.name} from #{@university.address}"
-end
+# 50.times do
+#   @university = University.new()
+#   @university.name = "#{university_one.sample} #{university_two.sample} #{university_three.sample}"
+#   @university.address = "#{university_one}"
+#   @university.save
+#   puts "added #{@university.name} from #{@university.address}"
+# end
 
 50.times{
   @question = Question.new()
@@ -105,17 +112,17 @@ end
   @user.password = "TestTest"
   @user.email = "#{@user.first_name}.#{@user.last_name}#{rand(1..1000)}@gmail.com"
   @user.address = "#{rand(12..200)} rue de la #{first_name.sample}, #{last_name.sample}ville"
-  @user.university_id = rand(10..50)
+  @user.university = University.all.sample
   @user.save!
   puts "Created #{@user.first_name} #{@user.last_name} who lives at #{@user.address} and who's email is #{@user.email}"
 }
 100.times{
   @meeting = Meeting.new()
-  @meeting.interviewee_id = rand(1..90)
-  @meeting.interviewer_id = @meeting.interviewee_id + rand(1..10)
+  @meeting.interviewee = User.all.sample
+  @meeting.interviewer = (User.all - [@meeting.interviewee]).sample
   @meeting.finished = true
-  @meeting.question_id = rand(1..49)
-  @meeting.date = Date.current + rand(24..240)
+  @meeting.question = Question.all.sample
+  @meeting.date = DateTime.current + rand(24..240).hours
   @meeting.save!
   puts "Created a meeting between #{@meeting.interviewee_id} user and #{@meeting.interviewer_id} on the #{@meeting.date} with question #{@meeting.question_id}"
 

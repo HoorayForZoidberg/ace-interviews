@@ -38,9 +38,10 @@
           </div>
         </li>
       <% else %>
-        <li class="">
-          <a href="" class="btn btn-ace btn-danger" data-toggle="modal" data-target="#log-in-modal"><i class="fas fa-user mr-1"></i> Log-in</a>
-           <%= render 'shared/modal-log-in', user: @user %>
+        <li class="nav-item">
+          <button type="button" class="nav-link border-0 bg-transparent" data-toggle="modal" data-target="#log-in-modal">
+            Log in
+          </button>
         </li>
       <% end %>
     </ul>
@@ -49,4 +50,7 @@
   </div>
   </div>
 </div>
+
+
+<%= render "shared/modal-log-in" %>
 

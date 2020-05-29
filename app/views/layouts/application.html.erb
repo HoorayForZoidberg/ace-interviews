@@ -4,12 +4,12 @@
     <title>AceConsulting</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    <link rel="shortcut icon" type="image/png" href="/assets/favicon-32x32.png">
-
+    <%= favicon_link_tag 'favicon-32x32.png', type: 'image/png' %>
     <meta name="current_user" content="<%= user_signed_in? ? current_user.id : 0 %>">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
+    <%= javascript_pack_tag 'components/charts', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>

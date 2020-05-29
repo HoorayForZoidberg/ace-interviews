@@ -1,3 +1,10 @@
+GIT
+  remote: https://github.com/ankane/chartkick.git
+  revision: ac1571cd7187a3f71b7afd50d983d558d2d84747
+  branch: edge
+  specs:
+    chartkick (3.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -75,7 +82,6 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
-    chartkick (3.3.1)
     childprocess (3.0.0)
     cloudinary (1.12.0)
       aws_cf_signer
@@ -140,6 +146,9 @@ GEM
       mini_portile2 (~> 2.4.0)
     orm_adapter (0.5.0)
     pg (1.2.3)
+    pg_search (2.3.2)
+      activerecord (>= 5.2)
+      activesupport (>= 5.2)
     pry (0.13.1)
       coderay (~> 1.1)
       method_source (~> 1.0)
@@ -268,7 +277,7 @@ DEPENDENCIES
   bootsnap (>= 1.4.2)
   byebug
   capybara (>= 2.15)
-  chartkick
+  chartkick!
   cloudinary (~> 1.12.0)
   devise
   dotenv-rails
@@ -277,6 +286,7 @@ DEPENDENCIES
   jbuilder (~> 2.7)
   listen (~> 3.2)
   pg (>= 0.18, < 2.0)
+  pg_search
   pry-byebug
   pry-rails
   puma (~> 4.1)
